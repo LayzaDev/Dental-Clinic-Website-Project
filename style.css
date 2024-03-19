@@ -51,14 +51,15 @@ nav ul li a {
   box-sizing: border-box;
 }*/
 
+
 #banner .image {
   display: flex;
   justify-content: center;
-  padding: 3vh 0;
+  margin: 0;
 }
 
 #banner .image img {
-  width: 40%;
+  width: 100%;
 }
 
 .default .text {
@@ -67,46 +68,76 @@ nav ul li a {
   line-height: 1.1em;
 }
 
-.default .text p {
-  letter-spacing: .01em;
-  color: #192935;
-  text-align: justify;
-}
-
 .default h2{
   text-align: center;
-  color: #29455b;
   font-size: 1.7em;
+  color: #29455b;
 }
 
-#whoAreWe .image {
-  display: flex;
-  justify-content: center;
+ p {
+  color: #353638;;
+}
+
+#whoAreWe {
+  margin-top: 30px;
+}
+
+#whoAreWe section{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#whoAreWe section div {
+  margin: 0 auto;
 }
 
 #whoAreWe .image img {
-  width: 40%;
+  border-radius: 50% 50%;
+  height: 40vh;
 }
 
 #cards {
   display: flex;
   flex-direction: column;
+  margin: 30px auto;
+}
+
+
+#cards section {
+  display: flex;
   margin: 0 auto;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3em;
+  justify-content: space-evenly;
 }
 
 .grid-item {
+  width: 200px;
   padding: 2vh;
-  flex-wrap: wrap;
+  text-align: center;
+  justify-content: space-evenly;
   box-sizing: border-box;
-  box-shadow: 2px 2px 5px #6c7e8c;
+  border: 1px solid #252626;
+  box-shadow: 1px 1px 3px #727272;
 }
 
+.grid-item h3 {
+  color: #29455b;
+}
+
+footer {
+  background-color: #0b8fac;
+  padding: 20px;
+}
+
+footer p {
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+}
