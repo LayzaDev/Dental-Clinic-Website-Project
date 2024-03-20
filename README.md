@@ -7,7 +7,7 @@
 <h2>Features:</h2>
 
 <p><b>Public Access:</b> Clients can explore the clinic's services, view its structure, and schedule appointments.</p>
-<p>- [ ] Home Page </p>
+<p>- [x] Home Page </p>
 <p>- [ ] Structure Page</p>
 <p>- [ ] Services Page</p>
 <p>- [ ] scheduling Page</p>
