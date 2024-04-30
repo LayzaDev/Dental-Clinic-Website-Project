@@ -1,0 +1,38 @@
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+form {
+  width: 100%;
+}
+
+form h2 {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+}
+
+.button {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.btn {
+  width: 20%;
+}
+
