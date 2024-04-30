@@ -8,13 +8,10 @@
 
 <p><b>Public Access:</b> Clients can explore the clinic's services, view its structure, and schedule appointments.</p>
 <p>- [x] Home Page </p>
-<p>- [ ] Structure Page</p>
-<p>- [ ] Services Page</p>
-<p>- [ ] scheduling Page</p>
-<p>- [ ] Login Page</p>
-<p>- [ ] User Registration</p>
-<p>- [ ] Appointment Registration</p>
-<p>- [ ] User Authentication</p>
+<p>- [x] Structure Page</p>
+<p>- [x] Services Page</p>
+<p>- [x] scheduling Page</p>
+<p>- [x] Login Page</p>
 
 <p><b>Private Access:</b> Clinic professionals have access to a secure area where they can manage patient appointments and view their respective patient lists.</p>
 
@@ -29,8 +26,6 @@ The following tools were used in the construction of the project:
 <p><b>Backend:</b> PHP</p>
 <p><b>Database:</b> MySQL</p>
 <p><b>Authentication:</b>JSON</p>
-
-
 
 <h2>Project Structure:</h2>
 <p><b>Home Page:</b> Provides an introduction to the clinic and its services.</p>
