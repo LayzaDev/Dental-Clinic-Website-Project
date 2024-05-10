@@ -15,6 +15,10 @@ h2 {
   color: #0b8fac;
 }
 
+div {
+  margin-bottom: 10px;
+}
+
 .inputs:focus {
   border: 2px solid #0b8fac;
 }
@@ -24,13 +28,24 @@ h2 {
   margin: 0.5rem 0;
 }
 
+.validationSpan {
+  color: red;
+  font-size: 14px;
+}
+
 button {
   display: flex;
   width: 60%;
   justify-content: center;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   background-color: #0b8fac;
   color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #056277;
+  transition: background 0.5s;
 }
 
 .inputs, button{

@@ -14,31 +14,33 @@
   </header>
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">Início</a></li>
       <li><a href="structure.html">Estrutura</a></li>
       <li><a href="treatments.html">Tratamentos</a></li>
       <li><a href="scheduling.html">Agendamentos</a></li>
-      <li><a href="login.html">Login</a></li>
     </ul>
   </nav>
   <main>
     <h2>Login</h2>
-    <form action="login.php" method="POST">
+    <form name="login" action="login.php" method="POST">
       <div>
         <label for="email" class="labels">E-mail</label>
-        <input type="email" name="email" id="email" class="inputs" placeholder="user@gmail.com" required>
+        <input type="email" name="email" id="email" class="inputs" placeholder="user@gmail.com">
+        <span class="validationSpan"></span>
       </div>
       <div>
-        <label for="senha" class="labels">Teste</label>
-        <input type="password" name="senha" id="senha" class="inputs" placeholder="*********" required>
+        <label for="password" class="labels">Teste</label>
+        <input type="password" name="password" id="password" class="inputs" placeholder="*********">
+        <span class="validationSpan"></span>
       </div>
-      <input type="hidden" name="hidden" value="hidden">
-      <button>
-          <span class="material-symbols-outlined">
-          login</span>
-          <span class="spanText">Login</span>
-        </button>
+      <button type="submit" id="btn">
+        <span class="material-symbols-outlined">
+        login</span>
+        <span class="spanText">Login</span>
+      </button>
+      <span class="successfulLogin"></span>
     </form>
   </main>
+  <script src="js/login.js"></script>
 </body>
 </html>

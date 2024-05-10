@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+main {
+  width: 90%;
+  margin: 2% auto;
+}
+
+#buttons {
+  padding: 10px 15px;
+  width: 90%;
+  margin: 30px auto;
+}
+
+#buttons .btn {
+  border: 1px solid #000;
+  width: 80%;
+  display: flex;
+  margin: 8px auto;
+  align-items: center;
+}
+
+#buttons .row {
+  border-bottom: 1px solid #ccc;
+  margin-top:8px;
+}
+
+#buttons .row > .divDesc{
+  padding-top: 8px;
+}
