@@ -17,12 +17,24 @@ form {
 form h2 {
   margin-top: 10px;
   text-align: center;
+  color: #0b3f48;
+}
+
+fieldset > legend {
+  margin-left: 8%;
+  font-size: 20px;
+  color: #232323;
 }
 
 .row {
   display: flex;
   flex-direction: row;
-  margin: 0.5em;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.form-group > input, .form-group > select {
+  margin-bottom: 2%;
 }
 
 .button {

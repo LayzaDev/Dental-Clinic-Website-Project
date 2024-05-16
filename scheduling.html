@@ -11,7 +11,7 @@
 <body>
   <header>
     <img src="./image/logotipo.jpeg" alt="logo">
-    <button type="button"><a href="login.html">Restrito</a></button>
+    <a href="login.html">Restrito</a>
   </header>
   <nav>
     <ul>
@@ -27,7 +27,7 @@
         <fieldset class="form-fieldset">
           <legend>Dados da Consulta</legend>
             <div class="row ">
-              <div class="form-group col-md-6">
+              <div class="form-group col-10 col-md-5">
                 <label class="form-label" for="specialty">Especialidade:</label>
                 <select name="specialty" id="specialty" class="form-select" required>
                   <option selected>Selecione</option>
@@ -39,7 +39,7 @@
                   <option value="implantodontia">6. Implantodontia</option>
                 </select>
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-10 col-md-5">
                 <label class="form-label" for="professional">Profissional:</label>
                 <select name="professional" id="professional" class="form-select" required>
                   <option selected>Selecione</option>
@@ -47,11 +47,11 @@
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-10 col-md-5">
                 <label class="form-label" for="date">Data da Consulta:</label>
                 <input type="date" name="date" id="date" class="form-control" required>
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-10 col-md-5">
                 <label class="form-label" for="time">Horário:</label>
                 <select name="time" id="time" class="form-select"  required>
                   <option selected>Selecione</option>
@@ -68,15 +68,15 @@
         <fieldset>
           <legend>Dados do Paciente</legend>
             <div class="row">
-              <div class="form-group col-md-7">
+              <div class="form-group col-10 col-md-6">
                 <label class="form-label" for="name">Nome do Paciente:</label>
                 <input type="text" id="name" name="name" class="form-control" required>
               </div>
-              <div class="form-group col-md-3">
-                <label class="form-label" for="birthday">Data de Nascimento:</label>
-                <input type="date" id="birthday" name="birthday" class="form-control" required>
+              <div class="form-group col-10 col-md-2">
+                <label class="form-label" for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" class="form-control" required>
               </div>
-              <div class="form-group col-md-2">
+              <div class="form-group col-10 col-md-2">
                 <label class="form-label" for="sex">Sexo:</label>
                 <select name="sex" id="sex" class="form-select" required>
                   <option value="">Selecione</option>
@@ -87,70 +87,18 @@
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-md-4">
-                <label class="form-label" for="phone">Telefone:</label>
-                <input type="tel" id="phone" name="phone" placeholder="34 99999-9999" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" maxlength="13" class="form-control" required>
-              </div>
-              <div class="form-group col-md-8">
+              <div class="form-group col-10 col-md-6">
                 <label class="form-label" for="email">E-mail:</label>
                 <input type="email" id="email" name="email" class="form-control" required>
               </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-3">
-                <label class="form-label" for="cep">CEP:</label>
-                <input type="text" name="cep" id="cep" class="form-control" required>
+              <div class="form-group col-10 col-md-2">
+                <label class="form-label" for="phone">Telefone:</label>
+                <input type="tel" id="phone" name="phone" placeholder="34 99999-9999" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" maxlength="13" class="form-control" required>
               </div>
-              <div class="form-group col-md-3">
-                <label class="form-label" for="state">Estado:</label>
-                <select name="state" id="state" class="form-select" required>
-                  <option value="">Selecione</option>
-                  <option value="AC">Acre</option>
-                  <option value="AL">Alagoas</option>
-                  <option value="AP">Amapá</option>
-                  <option value="AM">Amazonas</option>
-                  <option value="BA">Bahia</option>
-                  <option value="CE">Ceará</option>
-                  <option value="DF">Distrito Federal</option>
-                  <option value="ES">Espírito Santo</option>
-                  <option value="GO">Goiás</option>
-                  <option value="MA">Maranhão</option>
-                  <option value="MT">Mato Grosso</option>
-                  <option value="MS">Mato Grosso do Sul</option>
-                  <option value="MG">Minas Gerais</option>
-                  <option value="PA">Pará</option>
-                  <option value="PB">Paraíba</option>
-                  <option value="PR">Paraná</option>
-                  <option value="PE">Pernambuco</option>
-                  <option value="PI">Piauí</option>
-                  <option value="RJ">Rio de Janeiro</option>
-                  <option value="RN">Rio Grande do Norte</option>
-                  <option value="RS">Rio Grande do Sul</option>
-                  <option value="RO">Rondônia</option>
-                  <option value="RR">Roraima</option>
-                  <option value="SC">Santa Catarina</option>
-                  <option value="SP">São Paulo</option>
-                  <option value="SE">Sergipe</option>
-                  <option value="TO">Tocantins</option>
-                </select>
-              </div>
-              <div class="form-group col-md-6">
-                <label class="form-label" for="locality">Cidade:</label>
-                <input type="text" name="locality" id="locality" class="form-control">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label class="form-label" for="neighborhood">Bairro:</label>
-                <input type="text" name="neighborhood" id="neighborhood" class="form-control" required>
-              </div>
-              <div class="form-group col-md-6">
-                <label class="form-label" for="street">Logradouro:</label>
-                <input type="text" name="street" id="street" class="form-control" required>
-              </div>
-              <div class="form-group col-md-2">
-                <label class="form-label" for="number">Número:</label>
-                <input type="number" name="number" id="number" class="form-control" required>
+              
+              <div class="form-group col-10 col-md-2">
+                <label class="form-label" for="birthday">Data de Nascimento:</label>
+                <input type="date" id="birthday" name="birthday" class="form-control" required>
               </div>
             </div>
         </fieldset>

@@ -19,7 +19,7 @@ header img {
   align-items: center;
 }
 
-header button {
+header a {
   background-color: #0b8fac;
   border: none;
   position: absolute;
@@ -27,16 +27,13 @@ header button {
   right: 50px;
   border-radius: 20px;
   padding: 8px;
-}
-
-header button a {
   font-size: 15px;
-  color: #fff;
+  color: #ffff;
   text-decoration: none;
+  text-align: center;
 }
 
-
-header button:hover {
+header a:hover {
   background-color: #056277;
   transition: background 0.5s;
 }

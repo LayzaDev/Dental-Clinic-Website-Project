@@ -4,19 +4,58 @@
 }
 
 main {
-  width: 90%;
-  margin: 2% auto;
+  width: 100%;
+}
+
+header {
+  height: 13vh;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #056277;
+}
+
+header img {
+  height: 12vh;
+}
+
+header .divh3 {
+  margin-right: 10%;
+  color: #056277;
+}
+
+header .divLink {
+  margin-bottom: 2.5%;
+}
+
+header .divLink a {
+  font-size: 12px;
+  text-decoration: none;
+  width: 8%;
+  padding: 8px;
+  right: 50px;
+  position: absolute;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #056277;
+}
+
+header .divLink a:hover {
+  background-color: #097188;
+  transition: background 0.5s;
 }
 
 #buttons {
   padding: 10px 15px;
-  width: 90%;
+  width: 80%;
   margin: 30px auto;
 }
 
 #buttons .btn {
   border: 1px solid #000;
-  width: 80%;
   display: flex;
   margin: 8px auto;
   align-items: center;
@@ -27,6 +66,78 @@ main {
   margin-top:8px;
 }
 
+#buttons a:hover {
+  background-color: #cdcfcf;
+  color: #2e2e2e;
+  border: 1px solid #808080;
+}
+
 #buttons .row > .divDesc{
   padding-top: 8px;
 }
+
+footer {
+  background-color: #056277;
+  padding: 20px;
+}
+
+footer p {
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+@media (max-width: 720px){
+  header img {
+    height: 8vh;
+  }
+
+  header .divh3 {
+    margin-right: 25%;
+  }
+
+  header div h3 {
+    font-size: 1.5rem;
+  }
+
+  header .divLink a {
+    font-size: 0.8em;
+    width: 12%;
+    right: 30px;
+    margin-bottom: 0;
+  }
+
+  #buttons .btn {
+    justify-content: center;
+  }
+
+  footer p {
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 480px){
+
+  header img {
+    height: 5vh;
+  }
+
+  header .divh3 h3{
+    font-size: 1.2rem;
+  }
+
+  header .divLink a {
+    width: 15%;
+    right: 30px;
+  }
+
+  footer {
+    padding: 10px;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+}
+
+
