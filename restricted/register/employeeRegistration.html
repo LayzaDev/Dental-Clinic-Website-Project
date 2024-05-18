@@ -14,7 +14,7 @@ if(trim($email) == "")
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Smile</title>
+    <title>Restrita</title>
 
     <!-- Links CSS -->
     <link rel="stylesheet" href="../css/index.css">
@@ -35,7 +35,7 @@ if(trim($email) == "")
     </div>
   </header>
   <main class="container">  
-      <form id="registrationForm" action="registryControl.php" method="POST">
+      <form id="registrationForm" action="registerControll.php" method="POST">
           <fieldset>
               <legend>Dados Pessoais</legend>
               <div class="row">
@@ -155,8 +155,8 @@ if(trim($email) == "")
                   </select>
                 </div>
                 <div class="form-group col-9 col-md-4">
-                  <label for="city">Cidade</label>
-                  <input type="text" name="city" id="city" class="form-control">
+                  <label for="locality">Cidade</label>
+                  <input type="text" name="locality" id="locality" class="form-control">
                 </div>
                 <div class="form-group col-9 col-md-3">
                   <label for="neighborhood">Bairro</label>
@@ -172,14 +172,13 @@ if(trim($email) == "")
   <footer>
       <p>&copy; Todos os direitos são reservados à Vitalize.</p>
   </footer>
-  <script src="../js/ajax.js"></script>
+  <script src="ajax.js"></script>
   <script>
       const form = document.querySelector('#formCad');
 
       form.onsubmit = (e) => {
         e.preventDefault();
         alert('Funcionário cadastrado com sucesso!');
-        window.location.assign('../');
       }
   </script>
 </body>

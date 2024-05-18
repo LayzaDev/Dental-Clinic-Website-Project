@@ -20,23 +20,22 @@
 </head>
 <body>
   <div class="container">
-    <h3>Pacientes Cadastrados</h3> 
+    <h3>Meus Agendamentos</h3> 
     <div class="table-responsive">
       <table class="table table-striped table-hover">
         <tr>
           <th class="dt-center">Id</th>
-          <th class="dt-center">Nome</th>
-          <th class="dt-center">CPF</th>
-          <th class="dt-center">Sexo</th>
-          <th class="dt-center">Email</th>
-          <th class="dt-center">Telefone</th>
-          <th class="dt-center">Data de Nascimento</th>
+          <th class="dt-center">Paciente</th>
+          <th class="dt-center">Data da Consulta</th>
+          <th class="dt-center">Horario da Consulta</th>
+          <th class="dt-center">Serviço</th>
+          <th class="dt-center">Profissional</th>
         </tr>
         <?php
-          foreach($arrayPatient as $patient){
+          foreach($arrayScheduling as $scheduling){
             echo <<<HTML
               <tr>
-                <td><a href="controller.php?acao=deletePatient&cpf=$patient->cpf">Excluir</a></td>
+                <td><a href="controller.php?acao=deleteScheduling&cpf=$scheduling->id">Excluir</a></td>
                 <td>$Patient->id</td>
                 <td>$Patient->username</td>
                 <td>$Patient->cpf</td>

@@ -3,10 +3,8 @@
   function checkLogin($pdo, $email, $password) {
 
     $sql = <<<SQL
-      SELECT l.passwordHash
-      FROM Login l 
-      INNER JOIN Employee e
-      ON e.id = l.idEmployee
+      SELECT passwordHash
+      FROM Login
       WHERE email = ?
     SQL;
 
@@ -32,8 +30,8 @@
   $password = $_POST["password"] ?? "";
 
   if(checkLogin($pdo, $email, $password)){
-    header("location: ../restricted/");
+    header("location: ../restricted/index.html");
   } else {
-    header("location: ../login.html");
+    alert("ERRO AO LOGAR");
   }
 ?>
