@@ -3,8 +3,9 @@
   function checkLogin($pdo, $email, $password) {
 
     $sql = <<<SQL
-      SELECT passwordHash
-      FROM Login
+      SELECT l.passwordHash
+      FROM Login l 
+      INNER JOIN Employee e ON e.id = l.employeeId
       WHERE email = ?
     SQL;
 
@@ -19,19 +20,24 @@
       return password_verify($password, $row['passwordHash']);
 
     } catch (Exception $e) {
-      exit('Falha inesperada ao tentar fazer o login: ' . $e->getMessage());
+      error_log('ERROR: ' . $e->getMessage());
+      exit('Falha inesperada ao tentar fazer o login.');
     }
   }
 
   require "../database/conexaoMySQL.php";
   $pdo = mysqlConnect();
 
+  if($pdo === null) exit('Falha ao conectar ao banco de dados.');
+
   $email = $_POST["email"] ?? "";
   $password = $_POST["password"] ?? "";
 
   if(checkLogin($pdo, $email, $password)){
     header("location: ../restricted/index.html");
+    // exit("Acesso restrito liberado!");
   } else {
-    alert("ERRO AO LOGAR");
+    header("location: ../index.html");
+    // exit("Erro ao tentar acessar a parte restrita!");
   }
 ?>
