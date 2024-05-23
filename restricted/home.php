@@ -1,3 +1,13 @@
+<?php
+  require "../database/conexaoMySQL.php";
+  require "../php/sessionVerification.php";
+
+  session_start();
+  exitWhenNotLoggedIn();
+
+  $pdo = mysqlConnect();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -23,7 +33,7 @@
     <div id="buttons">
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="register/employeeRegistration.html" class="btn">Cadastrar Funcionário</a>
+          <a href="register/employeeRegistration.php" class="btn">Cadastrar Funcionário</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
           <p>Clique para cadastrar um novo funcionário no sistema</p>
@@ -31,7 +41,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="./listing/listOfEmployees.php" class="btn">Listagem de Funcionarios</a>
+          <a href="listing/listOfEmployees.php" class="btn">Listagem de Funcionarios</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
           <p>Clique para visualizar a listagem geral dos funcionarios da Real Smile</p>
@@ -39,7 +49,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="./listing/listOfPatients.php" class="btn">Listagem de Pacientes</a>
+          <a href="listing/listOfPatients.php" class="btn">Listagem de Pacientes</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
           <p>Clique para visualizar a listagem geral dos pacientes da Real Smile</p>
@@ -47,7 +57,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="./listing/listOfSchedulings.php" class="btn">Meus Agendamentos</a>
+          <a href="listing/listOfSchedulings.php" class="btn">Meus Agendamentos</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
           <p>Clique para visualizar seus agendamentos</p>
@@ -55,12 +65,20 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="./listing/listOfSpecificPatients.php" class="btn">Meus pacientes</a>
+          <a href="listing/listOfSpecificPatients.php" class="btn">Meus pacientes</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
           <p>Clique para visualizar seus pacientes</p>
         </div>
-      </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-4 divBtn">
+            <a href="../php/logout.php" class="btn">Sair</a>
+          </div>
+          <div class="col-12 col-md-8 divDesc">
+            <p>Clique para sair da sessão</p>
+          </div>
+        </div>
     </div>
   </main>
   <footer>

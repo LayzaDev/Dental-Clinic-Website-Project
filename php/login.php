@@ -1,6 +1,18 @@
 <?php 
 
-  function checkLogin($pdo, $email, $password) {
+  require "../database/conexaoMySQL.php";
+
+  class RequestResponse {
+    public $success;
+    public $detail;
+
+    function __construct($success, $detail){
+      $this->success = $success;
+      $this->detail = $detail;
+    }
+  }
+
+  function checkUserCredentials($pdo, $email, $password) {
 
     $sql = <<<SQL
       SELECT l.passwordHash
@@ -13,31 +25,41 @@
 
       $stmt = $pdo->prepare($sql);
       $stmt->execute([$email]);
-      $row = $stmt->fetch();
+      $passwordHash = $stmt->fetchColumn();
 
-      if(!$row) return false; 
+      if(!$passwordHash) 
+        return false; 
       
-      return password_verify($password, $row['passwordHash']);
+      if(!password_verify($password, $passwordHash)) 
+        return false;
+
+      return true;
 
     } catch (Exception $e) {
-      error_log('ERROR: ' . $e->getMessage());
-      exit('Falha inesperada ao tentar fazer o login.');
+      exit('Falha inesperada: ' . $e->getMessage());
     }
   }
-
-  require "../database/conexaoMySQL.php";
-  $pdo = mysqlConnect();
-
-  if($pdo === null) exit('Falha ao conectar ao banco de dados.');
 
   $email = $_POST["email"] ?? "";
   $password = $_POST["password"] ?? "";
 
-  if(checkLogin($pdo, $email, $password)){
-    header("location: ../restricted/index.html");
-    // exit("Acesso restrito liberado!");
+  $pdo = mysqlConnect();
+
+  if($pdo === null) exit('Falha ao conectar ao banco de dados.');
+
+  if(checkUserCredentials($pdo, $email, $password)){
+    $cookieParams = session_get_cookie_params();
+    $cookieParams['httponly'] = true;
+    session_set_cookie_params($cookieParams);
+
+    // Criando uma nova sessao para o usuario
+    session_start();
+    $_SESSION['loggedIn'] = true;
+    $_SESSION['user'] = $email;
+    $response = new RequestResponse(true, '../restricted/home.php');
   } else {
-    header("location: ../index.html");
-    // exit("Erro ao tentar acessar a parte restrita!");
+    $response = new RequestResponse(false, "");
   }
+
+  echo json_encode($response);
 ?>

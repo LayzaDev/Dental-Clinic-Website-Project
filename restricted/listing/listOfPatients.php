@@ -1,3 +1,13 @@
+<?php
+  require "../database/conexaoMySQL.php";
+  require "../php/sessionVerification.php";
+
+  session_start();
+  exitWhenNotLoggedIn();
+
+  $pdo = mysqlConnect();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,13 +1,12 @@
-<!-- <?php
+<?php
+  require "../database/conexaoMySQL.php";
+  require "../php/sessionVerification.php";
 
-session_start();
+  session_start();
+  exitWhenNotLoggedIn();
 
-$email = $_SESSION['user'] ?? "";
-
-if(trim($email) == "")
-    header("location: ../../login.html");
-
-?> -->
+  $pdo = mysqlConnect();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
