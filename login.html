@@ -48,7 +48,7 @@
     async function sendForm(form) {
 
       try {
-        const response = await fetch("login.php", {method: 'post', body: new FormData(form)});
+        const response = await fetch("php/login.php", {method: 'post', body: new FormData(form)});
 
         if(!response.ok) throw new Error(response.statusText);
 

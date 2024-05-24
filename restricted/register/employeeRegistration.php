@@ -176,8 +176,8 @@
       const form = document.querySelector('#formCad');
 
       form.onsubmit = (e) => {
-        e.preventDefault();
         alert('Funcionário cadastrado com sucesso!');
+        e.preventDefault();
       }
   </script>
 </body>

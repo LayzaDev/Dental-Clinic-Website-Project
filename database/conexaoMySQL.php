@@ -2,9 +2,9 @@
 
   function mysqlConnect(){
     $db_host = "sql110.infinityfree.com";
-    $db_username = "if0_36439084_realsmile";
+    $db_username = "if0_36439084";
     $db_password = "realsmileclinic";
-    $db_name = "if0_36439084";
+    $db_name = "if0_36439084_realsmile";
     $db_port = "3306";
 
     $options = [
