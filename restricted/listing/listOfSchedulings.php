@@ -46,13 +46,13 @@
             echo <<<HTML
               <tr>
                 <td><a href="controller.php?acao=deleteScheduling&cpf=$scheduling->id">Excluir</a></td>
-                <td>$Patient->id</td>
-                <td>$Patient->username</td>
-                <td>$Patient->cpf</td>
-                <td>$Patient->sex</td>
-                <td>$Patient->email</td>
-                <td>$Patient->phone</td>
-                <td>$Patient->birthday</td>
+                <td>$scheduling->id</td>
+                <td>$scheduling->username</td>
+                <td>$scheduling->cpf</td>
+                <td>$scheduling->sex</td>
+                <td>$scheduling->email</td>
+                <td>$scheduling->phone</td>
+                <td>$scheduling->birthday</td>
               </tr>
             HTML;
           }

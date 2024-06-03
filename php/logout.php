@@ -1,11 +1,14 @@
 <?php
-  // inicia a sessao
-  session_start();  
-  // apaga as variaveis de sessao
+  // inicia a sessão
+  session_start();
+
+  // apaga as variáveis de sessão
   session_unset();
-  // destroi a sessao
+
+  // destrói a sessão
   session_destroy();
-  // exclui o cookie da sessao
+
+  // exclui o cookie da sessão
   setcookie(session_name(), "", 1, "/");
 
   header('Location: ../index.html');

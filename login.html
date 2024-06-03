@@ -22,7 +22,7 @@
   </nav>
   <main>
     <h2>Login</h2>
-    <form name="formLogin" action="php/login.php" method="POST">
+    <form id="formLogin">
       <div>
         <label for="email" class="labels">E-mail</label>
         <input type="email" name="email" id="email" class="inputs" placeholder="user@gmail.com">
@@ -36,45 +36,13 @@
       <button type="submit" id="btn">
         <span class="material-symbols-outlined">
         login</span>
-        <span class="spanText">Login</span>
+        <span class="spanText">Entrar</span>
       </button>
       <div class="col-sm-12 d-grid">
-          <p id="loginFailMsg">Dados incorretos. Por favor, tente novamente.</p>
-        </div>
+        <p id="loginFailMsg">Dados incorretos. Por favor, tente novamente.</p>
+      </div> 
     </form>
   </main>
   <script src="js/login.js"></script>
-  <script>
-    async function sendForm(form) {
-
-      try {
-        const response = await fetch("php/login.php", {method: 'post', body: new FormData(form)});
-
-        if(!response.ok) throw new Error(response.statusText);
-
-        var bodyText = await response.text();
-        const result = JSON.parse(bodyText);
-
-        if(result.success)
-          window.location = result.details;
-        else {
-          document.querySelector("#loginFailMsg").style.display = 'block';
-          form.password.value = "";
-          form.password.focus(); 
-        }
-      } catch (error) {
-        console.log(bodyText ?? "");
-        console.error(error);
-      }
-    }
-    
-    window.onload = () => {
-      const form = document.forms.formLogin;
-      form.onsubmit = (event) => {
-        sendForm(form);
-        event.preventDefault();
-      }
-    }
-  </script>
 </body>
 </html>

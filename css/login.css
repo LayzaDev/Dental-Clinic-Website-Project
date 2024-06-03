@@ -59,3 +59,7 @@ button:hover {
 .material-symbols-outlined {
   vertical-align: middle;
 }
+
+#loginFailMsg {
+  display: none;
+}

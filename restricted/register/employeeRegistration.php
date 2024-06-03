@@ -34,7 +34,7 @@
     </div>
   </header>
   <main class="container">  
-      <form id="registrationForm" action="registerControll.php" method="POST">
+      <form id="registrationForm" action="employeeControll.php" method="POST">
           <fieldset>
               <legend>Dados Pessoais</legend>
               <div class="row">

@@ -4,30 +4,30 @@
   $pdo = mysqlConnect();
 
   // Dados da tabela Pessoa
-  $name = $_POST["username"] ?? "";
-  $cpf = $_POST["cpf"] ?? "";
-  $sex = $_POST["sex"] ?? "";
-  $email = $_POST["email"] ?? "";
-  $phone = $_POST["phone"] ?? "";
-  $birthday = $_POST["birthday"] ?? "";
+  $username = htmlspecialchars(trim($_POST["username"] ?? ""));
+  $cpf = htmlspecialchars(trim($_POST["cpf"] ?? ""));
+  $sex = htmlspecialchars(trim($_POST["sex"] ?? ""));
+  $email = htmlspecialchars(trim($_POST["email"] ?? ""));
+  $phone = htmlspecialchars(trim($_POST["phone"] ?? ""));
+  $birthday = htmlspecialchars(trim($_POST["birthday"] ?? ""));
 
   // Dados da tabela Funcionario
-  $hiringDate = $_POST["hiringDate"] ?? "";
-  $wage = $_POST["wage"] ?? "";
-  $cro = $_POST["cro"] ?? "";
-  $specialty = $_POST["specialty"] ?? "";
+  $hiringDate = htmlspecialchars(trim($_POST["hiringDate"] ?? ""));
+  $wage = htmlspecialchars(trim($_POST["wage"] ?? ""));
+  $cro = htmlspecialchars(trim($_POST["cro"] ?? ""));
+  $specialty = htmlspecialchars(trim($_POST["specialty"] ?? ""));
 
   // Dados da tabela Login
-  $password = $_POST["password"] ?? "";
+  $password = htmlspecialchars(trim($_POST["password"] ?? ""));
   $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
   // Dados da tabela endereco
-  $cep = $_POST["cep"] ?? "";
-  $uf = $_POST["state"] ?? "";
-  $locality = $_POST["locality"] ?? "";
-  $neighborhood = $_POST["neighborhood"] ?? "";
-  $street = $_POST["street"] ?? "";
-  $houseNumber = $_POST["houseNumber"] ?? "";
+  $cep = htmlspecialchars(trim($_POST["cep"] ?? ""));
+  $uf = htmlspecialchars(trim($_POST["state"] ?? ""));
+  $locality = htmlspecialchars(trim($_POST["locality"] ?? ""));
+  $neighborhood = htmlspecialchars(trim($_POST["neighborhood"] ?? ""));
+  $street = htmlspecialchars(trim($_POST["street"] ?? ""));
+  $houseNumber = htmlspecialchars(trim($_POST["houseNumber"] ?? ""));
 
   // Insere no banco de dados
   $sql1 = <<<SQL
@@ -56,7 +56,7 @@
 
     $stmt1 = $pdo->prepare($sql1);
     if(!$stmt1->execute([
-      $name, 
+      $username, 
       $cpf, 
       $sex, 
       $email, 
