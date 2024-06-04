@@ -1,6 +1,6 @@
 <?php
-  require "../database/conexaoMySQL.php";
-  require "../php/sessionVerification.php";
+  require "../../database/conexaoMySQL.php";
+  require "../../php/sessionVerification.php";
 
   session_start();
   exitWhenNotLoggedIn();

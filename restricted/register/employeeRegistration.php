@@ -1,6 +1,6 @@
 <?php
-  require "../database/conexaoMySQL.php";
-  require "../php/sessionVerification.php";
+  require "../../database/conexaoMySQL.php";
+  require "../../php/sessionVerification.php";
 
   session_start();
   exitWhenNotLoggedIn();
@@ -30,7 +30,7 @@
       <h3>Cadastro de Funcionários</h3>
     </div>
     <div class="divLink">
-      <a href="../index.html">Voltar</a>
+      <a href="../../index.html">Voltar</a>
     </div>
   </header>
   <main class="container">  
