@@ -1,104 +1,138 @@
 <?php 
-  require "../../database/conexaoMySQL.php";
 
-  $pdo = mysqlConnect();
+  // FUNÇÕES DE INSERÇÃO 
+  function insertPerson($connection){
 
-  // Dados da tabela Pessoa
-  $username = htmlspecialchars(trim($_POST["username"] ?? ""));
-  $cpf = htmlspecialchars(trim($_POST["cpf"] ?? ""));
-  $sex = htmlspecialchars(trim($_POST["sex"] ?? ""));
-  $email = htmlspecialchars(trim($_POST["email"] ?? ""));
-  $phone = htmlspecialchars(trim($_POST["phone"] ?? ""));
-  $birthday = htmlspecialchars(trim($_POST["birthday"] ?? ""));
+    $name = htmlspecialchars(trim($_POST["name"] ?? ""));
+    $cpf = htmlspecialchars(trim($_POST["cpf"] ?? ""));
+    $gender = htmlspecialchars(trim($_POST["gender"] ?? ""));
+    $phone = htmlspecialchars(trim($_POST["phone"] ?? ""));
+    $birthday = htmlspecialchars(trim($_POST["birthday"] ?? ""));
 
-  // Dados da tabela Funcionario
-  $hiringDate = htmlspecialchars(trim($_POST["hiringDate"] ?? ""));
-  $wage = htmlspecialchars(trim($_POST["wage"] ?? ""));
-  $cro = htmlspecialchars(trim($_POST["cro"] ?? ""));
-  $specialty = htmlspecialchars(trim($_POST["specialty"] ?? ""));
+    $birthday = date('Y-m-d', strtotime($birthday)); // Converte a data para o formato Y-m-d
 
-  // Dados da tabela Login
-  $password = htmlspecialchars(trim($_POST["password"] ?? ""));
-  $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+    $sql = <<<SQL
+      INSERT INTO Person (name, cpf, gender, phone, birthday)
+      VALUES (?, ?, ?, ?, ?)
+    SQL;
 
-  // Dados da tabela endereco
-  $cep = htmlspecialchars(trim($_POST["cep"] ?? ""));
-  $uf = htmlspecialchars(trim($_POST["state"] ?? ""));
-  $locality = htmlspecialchars(trim($_POST["locality"] ?? ""));
-  $neighborhood = htmlspecialchars(trim($_POST["neighborhood"] ?? ""));
-  $street = htmlspecialchars(trim($_POST["street"] ?? ""));
-  $houseNumber = htmlspecialchars(trim($_POST["houseNumber"] ?? ""));
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("sssss", $name, $cpf, $gender, $phone, $birthday);
+    if(!$stmt->execute()) throw new Exception("Falha na primeira inserção");
 
-  // Insere no banco de dados
-  $sql1 = <<<SQL
-    INSERT INTO Person (username, cpf, sex, email, phone, birthday)
-    VALUES (?, ?, ?, ?, ?, ?)
-  SQL;
+    $personId = $connection->insert_id;
 
-  $sql2 = <<<SQL
-    INSERT INTO Employee (hiringDate, wage, cro, specialty, personId)
-    VALUES (?, ?, ?, ?, ?)
-  SQL;
+    return $personId;
+  }
 
-  $sql3 = <<<SQL
-    INSERT INTO Login (email, passwordHash, employeeId)
-    VALUES (?, ?, ?)
-  SQL;
+  function insertLogin($connection){
 
-  $sql4 = <<<SQL
-    INSERT INTO AddressBase(cep, uf, locality, neighborhood, street, houseNumber, employeeId)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-  SQL;
+    $email = htmlspecialchars(trim($_POST["email"] ?? ""));
+    $password = htmlspecialchars(trim($_POST["password"] ?? ""));
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-  // faz a transacao
+    $sql = <<<SQL
+      INSERT INTO Login (email, password_hash)
+      VALUES (?, ?)
+    SQL;
+
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("ss", $email, $passwordHash);
+    if(!$stmt->execute()) throw new Exception("Falha na segunda inserção");
+
+    $loginId = $connection->insert_id; // captura o id gerado na criação do novo funcionario
+
+    return $loginId;
+  }
+
+  function insertEmployee($connection, $personId, $loginId, $specialtyId){
+
+    $contractStart = htmlspecialchars(trim($_POST["contract_start"] ?? ""));
+    $wage = htmlspecialchars(trim($_POST["wage"] ?? ""));
+    $cro = htmlspecialchars(trim($_POST["cro"] ?? ""));
+    
+    $contractStart = date('Y-m-d', strtotime($contractStart)); // Converte a data para o formato Y-m-d
+
+    $sql = <<<SQL
+      INSERT INTO Employee (contract_start, wage, cro, person_id, login_id, specialty_id)
+      VALUES (?, ?, ?, ?, ?, ?)
+    SQL;
+
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("sdsiii", $contractStart, $wage, $cro, $personId, $loginId, $specialtyId);
+    if(!$stmt->execute()) throw new Exception("Falha na quarta inserção");
+
+    $employeeId = $connection->insert_id; // captura o id gerado na criação do novo funcionario
+
+    return $employeeId;
+  }
+
+  function insertAddressBase($connection, $employeeId){
+
+    $cep = htmlspecialchars(trim($_POST["cep"] ?? ""));
+    $uf = htmlspecialchars(trim($_POST["uf"] ?? ""));
+    $city = htmlspecialchars(trim($_POST["city"] ?? ""));
+    $neighborhood = htmlspecialchars(trim($_POST["neighborhood"] ?? ""));
+    $street = htmlspecialchars(trim($_POST["street"] ?? ""));
+    $houseNumber = htmlspecialchars(trim($_POST["houseNumber"] ?? ""));
+
+    $sql5 = <<<SQL
+      INSERT INTO AddressBase(cep, uf, city, neighborhood, street, number, employee_id)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    SQL;
+
+    $stmt5 = $connection->prepare($sql5);
+    $stmt5->bind_param("sssssii", $cep, $uf, $city, $neighborhood, $street, $houseNumber, $employeeId);
+    if(!$stmt5->execute()) throw new Exception("Falha na quinta inserção");
+  }
+
+  function getSpecialtyId($connection){
+    $specialty = htmlspecialchars(trim($_POST["specialty"] ?? ""));
+
+    $sql = <<<SQL
+      SELECT s.id FROM Specialty s WHERE s.specialty = ?;
+    SQL;
+
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("s", $specialty);
+
+    if(!$stmt->execute()) throw new Exception("Falha na consulta de especialidade");
+
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    return $row['id'] ?? null;
+  }
+
   try {
-    $pdo->beginTransaction();
+    // CONEXAO COM O BANCO DE DADOS
+    include_once("../../database/conexaoMySQL.php");
 
-    $stmt1 = $pdo->prepare($sql1);
-    if(!$stmt1->execute([
-      $username, 
-      $cpf, 
-      $sex, 
-      $email, 
-      $phone, 
-      $birthday
-    ])) throw new Exception("Falha na primeira inserção");
+    $connection = mysqlConnect();
 
-    $personId = $pdo->lastInsertId();
+    // INICIA A TRANSACAO
+    $connection->begin_transaction();
 
-    $stmt2 = $pdo->prepare($sql2);
-    if(!$stmt2->execute([
-      $hiringDate,
-      $wage,
-      $cro,
-      $specialty,
-      $personId
-    ])) throw new Exception("Falha na segunda inserção");
+    $personId = insertPerson($connection);
 
-    $employeeId = $pdo->lastInsertId();
+    $loginId = insertLogin($connection);
 
-    $stmt3 = $pdo->prepare($sql3);
-    if(!$stmt3->execute([
-      $email,
-      $passwordHash,
-      $employeeId
-    ])) throw new Exception("Falha na terceira inserção");
+    $specialtyId = getSpecialtyId($connection);
 
-    $stmt4 = $pdo->prepare($sql4);
-    if(!$stmt4->execute([
-      $cep,
-      $uf,
-      $locality, 
-      $neighborhood,
-      $street, 
-      $houseNumber,
-      $employeeId
-    ])) throw new Exception("Falha na quarta inserção");
+    $employeeId = insertEmployee($connection, $personId, $loginId, $specialtyId);
 
-    $pdo->commit();
+    insertAddressBase($connection, $employeeId);
+
+    $connection->commit();
+
+    header("Location: employeeRegistration.php");
+
+    exit();
 
   } catch (Exception $e) {
-    $pdo->rollback();
+
+    $connection->rollback();
     exit('Rollback executado: ' . $e->getMessage());
+
   }
 ?>

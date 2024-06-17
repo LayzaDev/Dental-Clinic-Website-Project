@@ -40,3 +40,9 @@ div.row {
   background-color: #097188;
   transition: 0.5s;
 }
+
+.sucessRegister {
+  display: none;
+  text-align: center;
+  color: #008000;
+}

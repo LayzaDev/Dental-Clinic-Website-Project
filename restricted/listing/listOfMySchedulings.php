@@ -1,11 +1,27 @@
 <?php
-  require "../../database/conexaoMySQL.php";
-  require "../../php/sessionVerification.php";
+
+  include_once("../../database/conexaoMySQL.php");
+
+  $connection = mysqlConnect();
 
   session_start();
-  exitWhenNotLoggedIn();
 
-  $pdo = mysqlConnect();
+  if((!isset($_SESSION['email']) == true))
+  {
+    unset($_SESSION['email']);
+    header("Location: ../../php/login.php");
+  }
+
+  $logado = $_SESSION['email'];;
+
+  $sql = "SELECT 
+    p.*
+  FROM Person p
+  INNER JOIN Employee e ON e.person_id = p.id
+  INNER JOIN AddressBase a ON a.employee_id = e.id
+  ORDER BY id";
+
+  $result = $connection->query($sql);
 ?>
 
 <!DOCTYPE html>

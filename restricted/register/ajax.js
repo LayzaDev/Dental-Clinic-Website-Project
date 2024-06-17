@@ -1,9 +1,3 @@
-let cep = document.querySelector("#cep");
-
-cep.onkeyup = () => {
-  searchAddress();
-}
-
 async function searchAddress() {
   let cepValue = cep.value;
 
@@ -16,11 +10,17 @@ async function searchAddress() {
 
   let street = document.querySelector("#street");
   let neighborhood = document.querySelector("#neighborhood");
-  let locality = document.querySelector("#locality");
-  let state = document.querySelector("#state");
+  let city = document.querySelector("#city");
+  let state = document.querySelector("#uf");
 
   street.value = logradouro;
   neighborhood.value = bairro;
-  locality.value = localidade;
+  city.value = localidade;
   state.value = uf;
+}
+
+let cep = document.querySelector("#cep");
+
+cep.onkeyup = () => {
+  searchAddress();
 }

@@ -14,20 +14,29 @@
 
   $logado = $_SESSION['email'];
 
-  $sql = <<<SQL
+  $sql1 = <<<SQL
     SELECT 
-      p.id, p.name, p.cpf, p.phone, l.email,
-      e.contract_start, e.wage, e.cro, s.specialty, 
-      a.city, a.uf
+      pt.id, p.name, p.cpf, p.gender, l.email, p.phone, p.birthday
     FROM Person p
-    INNER JOIN Employee e ON e.person_id = p.id
-    INNER JOIN Login l ON e.login_id = l.id
-    INNER JOIN Specialty s ON e.specialty_id = s.id
-    INNER JOIN AddressBase a ON a.employee_id = e.id
-    ORDER BY id
+    INNER JOIN Patient pt ON pt.person_id = p.id
+    INNER JOIN Login l ON l.id = pt.login_id
+    INNER JOIN Employee e ON e.id = pt.employee_id
+    ORDER BY pt.id
+  SQL;
+  
+  $sql2 = <<<SQL
+    SELECT 
+      p2.name, e2.specialty 
+    FROM Person p2
+    INNER JOIN Employee e2 ON e2.person_id = p2.id
+    INNER JOIN Patient pt2 ON pt2.employee_id = e2.id
+    WHERE pt2.id = pt.id
+    ORDER BY p2.name
+    LIMIT 1
   SQL;
 
-  $result = $connection->query($sql);
+  $result1 = $connection->query($sql1);
+  $result2 = $connection->query($sql2);
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +51,18 @@
 
   <style>
     body {
-      text-align: center;
-    } 
+      padding-top: 2rem;
+    }
+
+    img {
+      width: 20px;
+    }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary p-3 mb-3">
     <div class="container">
-      <h3 class="navbar-brand mx-auto">Funcionários Cadastrados</h3> 
+      <h3 class="navbar-brand mx-auto">Meus Pacientes</h3> 
     </div>
     <div class="d-flex">
       <a href="../home.php" class="btn btn-danger me-5">Voltar</a>
@@ -60,34 +73,30 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Nome</th>
+          <th scope="col">Paciente</th>
           <th scope="col">CPF</th>
+          <th scope="col">Genero</th>
           <th scope="col">Telefone</th>
+          <th scope="col">Data de Nascimento</th>
           <th scope="col">Email</th>
-          <th scope="col">Início do contrato</th>
-          <th scope="col">Salário</th>
-          <th scope="col">CRO</th>
+          <th scope="col">Profissional</th>
           <th scope="col">Especialidade</th>
-          <th scope="col">Cidade</th>
-          <th scope="col">Estado</th>
           <th scope="col">...</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody> 
         <?php
-          while($row = $result->fetch_assoc()){
+          while($data = mysqli_fetch_assoc($result)){
             echo "<tr>";
-            echo "<td>".$row['id']."</td>";
-            echo "<td>".$row['name']."</td>";
-            echo "<td>".$row['cpf']."</td>";
-            echo "<td>".$row['phone']."</td>";
-            echo "<td>".$row['email']."</td>";
-            echo "<td>".$row['contract_start']."</td>";
-            echo "<td>".$row['wage']."</td>";
-            echo "<td>".$row['cro']."</td>";
-            echo "<td>".$row['specialty']."</td>";
-            echo "<td>".$row['city']."</td>";
-            echo "<td>".$row['uf']."</td>";
+            echo "<td>".$data['id']."</td>";
+            echo "<td>".$data['name']."</td>";
+            echo "<td>".$data['cpf']."</td>";
+            echo "<td>".$data['gender']."</td>";
+            echo "<td>".$data['phone']."</td>";
+            echo "<td>".$data['birthday']."</td>";
+            echo "<td>".$data['email']."</td>";
+            echo "<td>".$data['name']."</td>";
+            echo "<td>".$data['specialty']."</td>";
             echo "<td>
               <a class='btn btn-sm btn-primary' href='#'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'> 
@@ -100,7 +109,7 @@
                 </svg>
               </a>
             </td>";
-            echo"</tr>";
+            echo "</tr>";
           }
         ?>
       </tbody>

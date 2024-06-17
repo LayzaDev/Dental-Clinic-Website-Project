@@ -1,11 +1,13 @@
 <?php
-  require "../database/conexaoMySQL.php";
-  require "../php/sessionVerification.php";
 
   session_start();
-  exitWhenNotLoggedIn();
 
-  $pdo = mysqlConnect();
+  if((!isset($_SESSION['email']) == true)){
+    unset($_SESSION['email']);
+    header("location: ../php/login.php");
+  }
+
+  $logado = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +25,10 @@
       <img src="../image/logotipo.jpeg" alt="logo">
     </div>
     <div class="divh3">
-      <h3>Administrador</h3>
+      <h3>Restricted Area</h3>
     </div>
     <div class="divLink">
-      <a href="../index.html">Sair</a>
+      <a href="../php/sair.php">Sair</a>
     </div>
   </header>
   <main>
@@ -41,18 +43,10 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="listing/listOfEmployees.php" class="btn">Listagem de Funcionarios</a>
+          <a href="listing/listOfMyPatients.php" class="btn">Meus pacientes</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
-          <p>Clique para visualizar a listagem geral dos funcionarios da Real Smile</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-4 divBtn">
-          <a href="listing/listOfPatients.php" class="btn">Listagem de Pacientes</a>
-        </div>
-        <div class="col-12 col-md-8 divDesc">
-          <p>Clique para visualizar a listagem geral dos pacientes da Real Smile</p>
+          <p>Clique para visualizar seus pacientes</p>
         </div>
       </div>
       <div class="row">
@@ -65,20 +59,20 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="listing/listOfSpecificPatients.php" class="btn">Meus pacientes</a>
+          <a href="listing/listOfPatients.php" class="btn">Listagem de Pacientes</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
-          <p>Clique para visualizar seus pacientes</p>
+          <p>Clique para visualizar os pacientes da Real Smile</p>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 divBtn">
+          <a href="listing/listOfEmployees.php" class="btn">Listagem de Funcionários</a>
         </div>
-        <div class="row">
-          <div class="col-12 col-md-4 divBtn">
-            <a href="../php/logout.php" class="btn">Sair</a>
-          </div>
-          <div class="col-12 col-md-8 divDesc">
-            <p>Clique para sair da sessão</p>
-          </div>
+        <div class="col-12 col-md-8 divDesc">
+          <p>Clique para visualizar os funcionarios da Real Smile</p>
         </div>
+      </div>
     </div>
   </main>
   <footer>

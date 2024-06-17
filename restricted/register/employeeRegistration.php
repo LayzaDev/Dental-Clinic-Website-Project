@@ -1,11 +1,14 @@
 <?php
-  require "../../database/conexaoMySQL.php";
-  require "../../php/sessionVerification.php";
 
   session_start();
-  exitWhenNotLoggedIn();
+  
+  if((!isset($_SESSION['email'])) == true)
+  {
+    unset($_SESSION['email']);
+    header("Location: ../../php/login.php");
+  }
 
-  $pdo = mysqlConnect();
+  $logado = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +33,7 @@
       <h3>Cadastro de Funcionários</h3>
     </div>
     <div class="divLink">
-      <a href="../../index.html">Voltar</a>
+      <a href="../home.php">Voltar</a>
     </div>
   </header>
   <main class="container">  
@@ -39,8 +42,8 @@
               <legend>Dados Pessoais</legend>
               <div class="row">
                 <div class="form-group col-9 col-md-6">
-                  <label for="username">Nome</label>
-                  <input type="text" name="username" id="username" class="form-control">
+                  <label for="name">Nome</label>
+                  <input type="text" name="name" id="name" class="form-control">
                 </div>
                 <div class="form-group col-9 col-md-3">
                   <label for="cpf">CPF</label>
@@ -49,8 +52,8 @@
               </div>
               <div class="row">
                 <div class="form-group col-9 col-md-3">
-                  <label for="sex">Sexo</label>
-                  <select name="sex" id="sex" class="form-control">
+                  <label for="gender">Sexo</label>
+                  <select name="gender" id="gender" class="form-control">
                       <option value="">Selecione</option>
                       <option value="M">Masculino</option>
                       <option value="F">Feminino</option>
@@ -93,12 +96,12 @@
                     <label for="specialty">Especialidade</label>
                     <select name="specialty" id="specialty" class="form-select">
                       <option value="">Selecione</option>
-                      <option value="odontologia">Odontologia Geral</option>
-                      <option value="estetica">Estética Dental</option>
-                      <option value="odontopediatria">Odontopediatria</option>
-                      <option value="ortodontia">Ortodontia</option>
-                      <option value="periodontia">Periodontia</option>
-                      <option value="implantodontia">Implantodontia</option>
+                      <option value="Odontologia">Odontologia Geral</option>
+                      <option value="Estetica">Estética Dental</option>
+                      <option value="Odontopediatria">Odontopediatria</option>
+                      <option value="Ortodontia">Ortodontia</option>
+                      <option value="Periodontia">Periodontia</option>
+                      <option value="Implantodontia">Implantodontia</option>
                     </select>
                   </div>
               </div>
@@ -121,8 +124,8 @@
               </div>
               <div class="row">
                 <div class="form-group col-9 col-md-2">
-                  <label for="state">Estado</label>
-                  <select name="state" id="state" class="form-select">
+                  <label for="uf">Estado</label>
+                  <select name="uf" id="uf" class="form-select">
                     <option value="">Selecione</option>
                     <option value="AC">AC</option>
                     <option value="AL">AL</option>
@@ -154,8 +157,8 @@
                   </select>
                 </div>
                 <div class="form-group col-9 col-md-4">
-                  <label for="locality">Cidade</label>
-                  <input type="text" name="locality" id="locality" class="form-control">
+                  <label for="city">Cidade</label>
+                  <input type="text" name="city" id="city" class="form-control">
                 </div>
                 <div class="form-group col-9 col-md-3">
                   <label for="neighborhood">Bairro</label>
@@ -176,7 +179,6 @@
       const form = document.querySelector('#formCad');
 
       form.onsubmit = (e) => {
-        alert('Funcionário cadastrado com sucesso!');
         e.preventDefault();
       }
   </script>
