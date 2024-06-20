@@ -59,7 +59,7 @@
           <th scope="col">#</th>
           <th scope="col">Paciente</th>
           <th scope="col">CPF</th>
-          <th scope="col">Sexo</th>
+          <th scope="col">Gênero</th>
           <th scope="col">Email</th>
           <th scope="col">Telefone</th>
           <th scope="col">Data de Nascimento</th>

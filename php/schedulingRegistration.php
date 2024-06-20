@@ -94,7 +94,7 @@
     $consultationTime = $_POST["consultationTime"];
 
     $sql = <<<SQL
-      INSERT INTO Scheduling (consultation_date, consultation_time, patient_id, employee_id, specialty_id)
+      INSERT INTO Schedule (consultation_date, consultation_time, patient_id, employee_id, specialty_id)
       VALUES (?, ?, ?, ?, ?)
     SQL;
 
