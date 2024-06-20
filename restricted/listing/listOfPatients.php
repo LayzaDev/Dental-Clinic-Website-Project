@@ -14,11 +14,14 @@
 
   $logado = $_SESSION['email'];
 
-  $sql = "SELECT 
-	  pt.id, p.username, p.cpf, p.sex, p.email, p.phone, p.birthday, pt.employeeId
-  FROM Person p
-  INNER JOIN Patient pt ON pt.person_id = p.id
-  ORDER BY id";
+  $sql = <<<SQL
+    SELECT 
+      pt.id, p.name, p.cpf, p.gender, p.phone, p.birthday, l.email, pt.employee_id
+    FROM Person p
+    INNER JOIN Patient pt ON pt.person_id = p.id
+    INNER JOIN Login l ON l.id = pt.login_id
+    ORDER BY pt.id
+  SQL;
 
   $result = $connection->query($sql);
 ?>
@@ -54,13 +57,13 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Nome</th>
+          <th scope="col">Paciente</th>
           <th scope="col">CPF</th>
           <th scope="col">Sexo</th>
           <th scope="col">Email</th>
           <th scope="col">Telefone</th>
           <th scope="col">Data de Nascimento</th>
-          <th scope="col">Médico(a)</th>
+          <th scope="col">Profissional</th>
           <th scope="col">...</th>
         </tr>
       </thead>
@@ -68,14 +71,14 @@
         <?php
           while($data = mysqli_fetch_assoc($result)){
             echo "<tr>";
-            echo "<td>".$data['id']."</td>";
-            echo "<td>".$data['username']."</td>";
-            echo "<td>".$data['cpf']."</td>";
-            echo "<td>".$data['sex']."</td>";
-            echo "<td>".$data['email']."</td>";
-            echo "<td>".$data['phone']."</td>";
-            echo "<td>".$data['birthday']."</td>";
-            echo "<td>".$data['employeeId']."</td>";
+            echo "<td>{$data['id']}</td>";
+            echo "<td>{$data['username']}</td>";
+            echo "<td>{$data['cpf']}</td>";
+            echo "<td>{$data['gender']}</td>";
+            echo "<td>{$data['email']}</td>";
+            echo "<td>{$data['phone']}</td>";
+            echo "<td>{$data['birthday']}</td>";
+            echo "<td>{$data['employee_id']}</td>";
             echo "<td>
               <a class='btn btn-sm btn-primary' href='#'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'> 

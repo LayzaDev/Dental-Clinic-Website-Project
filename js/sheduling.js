@@ -3,7 +3,7 @@ async function selectProfessional(specialtyValue) {
 
   let professionalField = document.querySelector("#professional");
   professionalField.innerHTML = '<option value=""> Selecione </option>';
-
+  
   try {
     let response = await fetch(`catchProfessionals.php?specialtyValue=${specialtyValue}`);
 
@@ -14,7 +14,7 @@ async function selectProfessional(specialtyValue) {
     data.forEach(professional => {
       const option = document.createElement("option");
       
-      option.value = professional.name;
+      option.value = professional.id;
       option.textContent = professional.name;
       professionalField.appendChild(option);
       

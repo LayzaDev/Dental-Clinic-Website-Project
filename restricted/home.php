@@ -25,7 +25,7 @@
       <img src="../image/logotipo.jpeg" alt="logo">
     </div>
     <div class="divh3">
-      <h3>Restricted Area</h3>
+      <h3>Área Restrita</h3>
     </div>
     <div class="divLink">
       <a href="../php/sair.php">Sair</a>
@@ -43,18 +43,10 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="listing/listOfMyPatients.php" class="btn">Meus pacientes</a>
+          <a href="listing/listOfEmployees.php" class="btn">Listagem de Funcionários</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
-          <p>Clique para visualizar seus pacientes</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-md-4 divBtn">
-          <a href="listing/listOfSchedulings.php" class="btn">Meus Agendamentos</a>
-        </div>
-        <div class="col-12 col-md-8 divDesc">
-          <p>Clique para visualizar seus agendamentos</p>
+          <p>Clique para visualizar os funcionarios da Real Smile</p>
         </div>
       </div>
       <div class="row">
@@ -67,10 +59,10 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="listing/listOfEmployees.php" class="btn">Listagem de Funcionários</a>
+          <a href="listing/listOfSchedulings.php" class="btn">Agendamentos</a>
         </div>
         <div class="col-12 col-md-8 divDesc">
-          <p>Clique para visualizar os funcionarios da Real Smile</p>
+          <p>Clique para visualizar os agendamentos do mês</p>
         </div>
       </div>
     </div>

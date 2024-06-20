@@ -77,17 +77,17 @@
         <?php
           while($row = $result->fetch_assoc()){
             echo "<tr>";
-            echo "<td>".$row['id']."</td>";
-            echo "<td>".$row['name']."</td>";
-            echo "<td>".$row['cpf']."</td>";
-            echo "<td>".$row['phone']."</td>";
-            echo "<td>".$row['email']."</td>";
-            echo "<td>".$row['contract_start']."</td>";
-            echo "<td>".$row['wage']."</td>";
-            echo "<td>".$row['cro']."</td>";
-            echo "<td>".$row['specialty']."</td>";
-            echo "<td>".$row['city']."</td>";
-            echo "<td>".$row['uf']."</td>";
+            echo "<td>{$row['id']}</td>";
+            echo "<td>{$row['name']}</td>";
+            echo "<td>{$row['cpf']}</td>";
+            echo "<td>{$row['phone']}</td>";
+            echo "<td>{$row['email']}</td>";
+            echo "<td>{$row['contract_start']}</td>";
+            echo "<td>{$row['wage']}</td>";
+            echo "<td>{$row['cro']}</td>";
+            echo "<td>{$row['specialty']}</td>";
+            echo "<td>{$row['city']}</td>";
+            echo "<td>{$row['uf']}</td>";
             echo "<td>
               <a class='btn btn-sm btn-primary' href='#'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'> 

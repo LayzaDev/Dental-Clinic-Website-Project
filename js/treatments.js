@@ -1,10 +1,19 @@
 window.onload = () => {
-  const modals = document.querySelectorAll('.modal');
 
-  for (let modal of modals) {
-    let span = modal.parentNode.querySelector('span');
-    span.onclick = () => modal.classList.add('showModal');
-    span.ondblclick = () => modal.classList.remove('showModal');
-    modal.onclick = () => modal.classList.remove('showModal');
-  }
+  const spansSaibaMais = document.querySelectorAll('.description span');
+
+  spansSaibaMais.forEach(element => {
+
+    element.onclick = () => {
+      
+      const modal = element.closest('.card').querySelector('.modal');
+    
+      if (modal.classList.contains('visible')) {
+        modal.classList.remove('visible');
+      } else {
+        modal.classList.add('visible');
+      }
+    };
+  });
 };
+

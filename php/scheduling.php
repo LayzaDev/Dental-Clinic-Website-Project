@@ -24,13 +24,14 @@
 <body>
   <header>
     <img src="../image/logotipo.jpeg" alt="logo">
-    <a href="login.php">Restrito</a>
+    <a href="../login.html">Restrito</a>
   </header>
   <nav>
     <ul>
       <li><a href="../index.html">Inicio</a></li>
       <li><a href="../structure.html">Estrutura</a></li>
       <li><a href="../treatments.html">Tratamentos</a></li>
+      <li><a href="#">Agendamento</a></li>
     </ul>
   </nav>
   <main class="container">
