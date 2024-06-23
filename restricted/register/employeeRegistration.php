@@ -1,5 +1,9 @@
 <?php
 
+  include_once("../../database/conexaoMySQL.php");
+
+  $connection = mysqlConnect();
+
   session_start();
   
   if((!isset($_SESSION['email'])) == true)
@@ -9,6 +13,13 @@
   }
 
   $logado = $_SESSION['email'];
+
+  $sql = <<<SQL
+    SELECT * FROM Specialty
+    ORDER BY id
+  SQL;
+
+  $result = $connection->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -96,12 +107,11 @@
                     <label for="specialty">Especialidade</label>
                     <select name="specialty" id="specialty" class="form-select">
                       <option value="">Selecione</option>
-                      <option value="Odontologia">Odontologia Geral</option>
-                      <option value="Estetica">Estética Dental</option>
-                      <option value="Odontopediatria">Odontopediatria</option>
-                      <option value="Ortodontia">Ortodontia</option>
-                      <option value="Periodontia">Periodontia</option>
-                      <option value="Implantodontia">Implantodontia</option>
+                      <?php
+                        while($row = $result->fetch_assoc()){
+                          echo '<option value="' . $row['id'] . '">' . $row['specialty'] . '</option>';
+                        } 
+                      ?>
                     </select>
                   </div>
               </div>

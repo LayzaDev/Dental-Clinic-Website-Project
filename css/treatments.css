@@ -76,7 +76,7 @@ body {
   display: none;
 }
 
-.showModal {
+.modal.visible {
   display: block;
 }
 

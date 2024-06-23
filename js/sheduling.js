@@ -5,7 +5,7 @@ async function selectProfessional(specialtyValue) {
   professionalField.innerHTML = '<option value=""> Selecione </option>';
   
   try {
-    let response = await fetch(`catchProfessionals.php?specialtyValue=${specialtyValue}`);
+    let response = await fetch(`catchProfessionals.php?specialty=${specialtyValue}`);
 
     if(!response.ok) throw new Error(`Erro na resposta do servidor: ${response.statusText}`);
 

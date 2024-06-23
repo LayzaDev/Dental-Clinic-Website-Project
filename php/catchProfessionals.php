@@ -23,8 +23,6 @@
     if(!$stmt->execute()) throw new Exception("Falha na consulta do profissional");
 
     $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-
     $professionals = array();
 
     while($row = $result->fetch_assoc()){
@@ -34,6 +32,6 @@
     header('Content-Type: application/json');
     echo json_encode($professionals);
   } else {
-    echo("SpecialtyId invalido");
+    echo json_encode(["error" => "SpecialtyId invalido"]);
   }
 ?>
