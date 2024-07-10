@@ -47,7 +47,7 @@
     </div>
   </header>
   <main class="container">  
-      <form id="registrationForm" action="employeeControll.php" method="POST">
+      <form id="registrationForm" action="editControll.php?id=<?php echo $id; ?>" method="POST">
           <fieldset>
               <legend>Dados Pessoais</legend>
               <div class="row">

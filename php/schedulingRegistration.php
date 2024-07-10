@@ -1,11 +1,11 @@
 <?php
   
   function insertPerson($connection){
-    $patient = htmlspecialchars(trim($_POST["name"] ?? ""));
-    $cpf = htmlspecialchars(trim($_POST["cpf"] ?? ""));
-    $gender = $_POST["gender"] ?? "";
-    $phone = htmlspecialchars(trim($_POST["phone"] ?? ""));
-    $birthday = $_POST["birthday"] ?? "";
+    $patient = htmlspecialchars(trim($_POST["name"]));
+    $cpf = htmlspecialchars(trim($_POST["cpf"]));
+    $gender = $_POST["gender"];
+    $phone = htmlspecialchars(trim($_POST["phone"]));
+    $birthday = $_POST["birthday"];
 
     $birthday = date('Y-m-d', strtotime($birthday)); // Converte a data para o formato Y-m-d
 
@@ -38,14 +38,14 @@
     $stmt->bind_param("ss", $email, $passwordHash);
     if(!$stmt->execute()) throw new Exception("Falha na segunda inserção");
 
-    $loginId = $connection->insert_id;
+    $loginId = $connection->insert_id; // captura o id gerado na criação do novo login
 
     return $loginId;
   }
 
   function getEmployeeId($connection){
 
-    $professional = $_POST["professional"] ?? "";
+    $professional = $_POST["professional"];
 
     // $sql = <<<SQL
     //   SELECT p.id FROM Person p
@@ -90,11 +90,11 @@
 
   function insertSheduling($connection, $patientId, $employeeId, $specialtyId){
 
-    $consultationDate = $_POST["consultationDate"] ?? "";
-    $consultationTime = $_POST["consultationTime"] ?? "";
+    $consultationDate = $_POST["consultationDate"];
+    $consultationTime = $_POST["consultationTime"];
 
     $sql = <<<SQL
-      INSERT INTO Schedule (consultation_date, consultation_time, patient_id, employee_id, specialty_id)
+      INSERT INTO Scheduling (consultation_date, consultation_time, patient_id, employee_id, specialty_id)
       VALUES (?, ?, ?, ?, ?)
     SQL;
 

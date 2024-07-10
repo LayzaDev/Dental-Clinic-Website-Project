@@ -86,25 +86,7 @@
     if(!$stmt5->execute()) throw new Exception("Falha na quinta inserção");
   }
 
-  // function getSpecialtyId($connection){
-  //   $specialty = htmlspecialchars(trim($_POST["specialty"] ?? ""));
-
-  //   $sql = <<<SQL
-  //     SELECT s.id FROM Specialty s WHERE s.specialty = ?;
-  //   SQL;
-
-  //   $stmt = $connection->prepare($sql);
-  //   $stmt->bind_param("s", $specialty);
-
-  //   if(!$stmt->execute()) throw new Exception("Falha na consulta de especialidade");
-
-  //   $result = $stmt->get_result();
-  //   $row = $result->fetch_assoc();
-
-  //   return $row['id'] ?? null;
-  // }
-
-  function getSpecialtyId(){
+  function getSpecialtyId($connection){
 
     $specialtyId = $_POST["specialty"] ?? "";
 

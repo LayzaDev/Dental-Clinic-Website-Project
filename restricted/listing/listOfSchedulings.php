@@ -30,7 +30,7 @@
       (SELECT sp.specialty FROM Specialty sp 
        WHERE sp.id = s.specialty_id) 
        AS specialty
-    FROM Schedule s
+    FROM Scheduling s
     ORDER BY s.id
   SQL;
 

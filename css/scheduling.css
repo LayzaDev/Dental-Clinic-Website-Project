@@ -2,49 +2,407 @@ body {
   box-sizing: border-box;
 }
 
-.container {
+header {
+  background-color: #fff;
+  height: 13vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
+  position: relative;
+}
+
+header img {
+  height: 13vh;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  padding: 0.5px;
+  background-color: #aaaaf7;
+  opacity: 0.6;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
 }
 
 form {
+  width: 60%;
+  margin: 30px 0px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+fieldset {
+  border: none;
+}
+
+legend {
+  font-size: 18px;
+  color: #044756;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 5px;
+}
+
+.item,
+.specialItem {
+  display: flex;  
+  flex-direction: column;
+  position: relative;
+}
+
+.item {
+  margin: 15px 10px;
+}
+
+.specialItem {
+  margin: 15px 5px 0px;
+}
+
+.inputPhone {
+  margin-top: 34px;
+}
+
+.inputBirthday {
+  margin-top: 14px;
+}
+
+input,
+select {
   width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 1px solid #035f74;
+  opacity: 0.8;
 }
 
-form h2 {
-  margin-top: 10px;
-  text-align: center;
-  color: #0b3f48;
+.labelInput, 
+.labelSelect {
+  font-size: 15px;
+  color: #565656;
 }
 
-fieldset > legend {
-  margin-left: 8%;
-  font-size: 20px;
-  color: #232323;
+.labelInput {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  pointer-events: none;
+  transition: .5s;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 0 auto;
+.inputs:focus ~ .labelInput,
+.inputs:active ~ .labelInput {
+  top: -20px;
+  font-size: 13px;
+  color: #0b8fac;
+  font-weight: 500;
 }
 
-.form-group > input, .form-group > select {
-  margin-bottom: 2%;
-}
-
-.button {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  margin: 1rem;
-}
+.col-8 {grid-column: span 8;}
+.col-6 {grid-column: span 6;}
+.col-4 {grid-column: span 4;}
 
 .btn {
-  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 35px 10px 0px;
 }
 
+.btn a, 
+.btn button {
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+  background-color: black;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.btn a {
+  font-size: 14px;
+  width: 85px;
+  text-decoration: none;
+  background-color: #6d0606;
+  text-align: center;
+}
+
+.btn a:hover {
+  transition: 0.5s;
+  background-color: #850404;
+}
+
+.btn button {
+  width: 110px;
+  font-size: 15px;
+  background-color:#05586b;
+}
+
+.btn button:hover {
+  transition: 0.5s;
+  background-color: #066a80;
+}
+
+footer {
+  background-color: #0b8fac;
+  padding: 2px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+footer p {
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+}
+
+@media (max-width: 1024px){
+  header,
+  header img {
+    height: 7vh;
+  }
+
+  form {
+    width: 80%;
+    margin: 0;
+  }
+
+  legend {
+    font-size: 20px;
+    margin-left: 6px;
+    margin-bottom: 12px;
+  }
+
+  .container {
+    gap: 7px;
+  }
+
+  .labelInput, 
+  .labelSelect {
+    font-size: 16px;
+  }
+
+  input:focus ~ .labelInput,
+  input:active ~ .labelInput {
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 4px;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 800px){
+
+  form {
+    width: 75%;
+    margin: 0;
+  }
+
+  .container {
+    gap: 7px;
+  }
+
+  .labelInput, 
+  .labelSelect {
+    font-size: 16px;
+  }
+
+  input:focus ~ .labelInput,
+  input:active ~ .labelInput {
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 4px;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px){
+
+  form {
+    width: 65%;
+  }
+
+  .labelInput, 
+  .labelSelect {
+    font-size: 16px;
+  }
+
+  .inputPhone {
+    margin: 15px 5px 0;
+  }
+
+  .specialItem {
+    margin-bottom: 10px;
+  }
+
+  input:focus ~ .labelInput,
+  input:active ~ .labelInput {
+    font-size: 14px;
+  }
+
+  .col-8 {grid-column: span 12;}
+  .col-4 {grid-column: span 12;}
+
+}
+
+@media (max-width: 480px){
+
+  main {
+    height: 95vh;
+  }
+
+  form {
+    width: 85%;
+    margin: 45px 0px 0px;
+  }
+
+  legend {
+    font-size: 18px;
+  }
+
+  .labelInput, 
+  .labelSelect {
+    font-size: 15px;
+  }
+
+  select {
+    width: 98%;
+  }
+
+  .inputPhone, .inputBirthday {
+    width: 94%;
+  }
+
+  .btn {
+    margin: 8px 5px 0px;
+  }
+
+  .btn a, 
+  .btn button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .btn a {
+    width: 80px;
+  }
+
+  .btn button {
+    width: 100px;
+  }
+}
+
+@media (max-width: 375px){
+
+  header, 
+  header img {
+    height: 9vh;
+  }
+
+  hr {
+    padding: 0.3px;
+  }
+
+  main {
+    height: 100vh;
+  }
+
+  form {
+    width: 90%;
+    margin: 50px 0px 0px;
+  }
+
+  legend {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .container {
+    gap: 0px;
+  }
+
+  .item {
+    margin: 12px 8px;
+  }
+
+  .specialItem {
+    margin: 13px 5px 0px;
+  }
+
+  .inputPhone {
+    margin-top: 12px;
+  }
+
+  .inputBirthday {
+    margin-top: 12px;
+  }
+
+  .labelInput, 
+  .labelSelect {
+    font-size: 12px;
+  }
+
+  .inputs:focus ~ .labelInput,
+  .inputs:active ~ .labelInput {
+    top: -18px;
+    font-size: 11px;
+  }
+
+  .col-8 {grid-column: span 12;}
+  .col-6 {grid-column: span 6;}
+  .col-4 {grid-column: span 12;}
+
+  .btn {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 5px 0px;
+  }
+
+  .btn a, 
+  .btn button {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .btn a {
+    width: 80px;
+  }
+
+  .btn button {
+    width: 100px;
+  }
+
+  footer {
+    background-color: #0b8fac;
+    padding: 1px;
+  }
+
+  footer p {
+    font-size: 12px;
+  }
+}

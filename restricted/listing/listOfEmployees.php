@@ -78,7 +78,7 @@
           while($row = $result->fetch_assoc()){
             echo "<tr>";
             echo "<td>{$row['id']}</td>";
-            echo "<td>{$row['Profissional']}</td>";
+            echo "<td>{$row['name']}</td>";
             echo "<td>{$row['cpf']}</td>";
             echo "<td>{$row['phone']}</td>";
             echo "<td>{$row['email']}</td>";
