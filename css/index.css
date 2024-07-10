@@ -2,11 +2,11 @@ body {
   font-family: sans-serif;
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 header {
   background-color: #fff;
-  height: 13vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,9 +14,13 @@ header {
 }
 
 header img {
-  height: 13vh;
   justify-content: center;
   align-items: center;
+}
+
+header,
+header img {
+  height: 13vh;
 }
 
 header a {
@@ -76,22 +80,62 @@ footer p {
   font-size: 18px;
 }
 
-@media(max-width: 768px){
+@media(max-width: 1024px){
+  header,
+  header img {
+    height: 10vh;
+  }
 
-  button a {
-    font-size: 0.7em;
+  header a {
+    width: 15%;
+    font-size: 17px;
+  }
+
+  nav ul {
+    height: 5vh;
   }
 
   nav ul li a {
-    font-size: 0.9em;
+    font-size: 16px;
+  }
+  
+  footer {
+    padding: 10px;
   }
 
-  header button {
+  footer p {
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 800px){
+  header,
+  header img {
+    height: 9vh;
+  }
+
+  header a {
+    width: 10%;
+  }
+
+  nav ul {
+    height: 6vh;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  header a {
     width: 15%;
   }
 
-  header button a {
-    font-size: 0.8em;
+  header a {
+    font-size: 14px;
+  }
+  
+  footer {
+    padding: 10px;
   }
 
   footer p {
@@ -100,9 +144,23 @@ footer p {
 }
 
 @media(max-width: 480px){
-  header button {
-    width: 20%;
+  header,
+  header img {
+    height: 8vh;
+  }
+
+  header a {
+    width: 13%;
+    font-size: 12px;
     right: 10px;
+  }
+
+  nav ul {
+    height: 5vh;
+  }
+
+  nav ul li a {
+    font-size:11px;
   }
 
   footer {

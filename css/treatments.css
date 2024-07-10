@@ -67,7 +67,7 @@ body {
 }
 
 .modal a:hover {
-  background-color: #1296b7;
+  background-color: #056279;
 }
 
 .modal {
@@ -80,12 +80,19 @@ body {
   display: block;
 }
 
-@media (max-width: 480px){
-  img {
-    height: 20vh;
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 1024px){
+  .card img {
+    height: 15vh;
   }
 
-  h2, .description {
+  h2, 
+  .description {
     font-size: 14px;
   }
 
@@ -93,3 +100,28 @@ body {
     font-size: 12px;
   }
 }
+
+@media (max-width: 800px){
+  .card img {
+    height: 15vh;
+  }
+
+  footer {
+    position: relative;
+  }
+}
+
+@media (max-width: 480px){
+  .card img {
+    height: 18vh;
+  }
+
+  .card h2, .description {
+    font-size: 14px;
+  }
+
+  .modal p {
+    font-size: 14px;
+  }
+}
+

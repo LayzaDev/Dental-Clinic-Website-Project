@@ -79,7 +79,8 @@
   color: #29455b;
 }
 
-@media(max-width: 1280px){
+@media(max-width: 1024px){
+
 
   #whoAreWe section{
     display: flex;
@@ -92,7 +93,7 @@
   }
 
   #whoAreWe .image img {
-    height: 28vh;
+    height: 22vh;
   }
 
   .grid-container {
@@ -101,11 +102,28 @@
   }
 
   .grid-item {
-    margin: 0 auto;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .grid-item h3 {
+    font-size: 17px;
+  }
+
+  .grid-item p {
+    font-size: 16px;
   }
 }
 
 @media(max-width: 768px){
+
+  header {
+    height: 9vh;
+  }
+
+  header img{
+    height: 9vh;
+  }
 
   .text h2{
     text-align: center;
@@ -120,10 +138,6 @@
 }
 
 @media(max-width: 480px){
-
-  nav ul li a {
-    font-size: 0.8em;
-  }
 
   .default h2{
     text-align: center;
