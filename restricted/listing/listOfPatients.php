@@ -16,7 +16,7 @@
 
   $sql = <<<SQL
     SELECT 
-      pt.id, p.name, p.cpf, p.gender, p.phone, p.birthday, l.email, pt.employee_id
+      pt.id, p.name, p.cpf, p.phone, p.birthday, l.email, pt.employee_id
     FROM Person p
     INNER JOIN Patient pt ON pt.person_id = p.id
     INNER JOIN Login l ON l.id = pt.login_id
@@ -33,38 +33,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restrita</title>
 
+  <link rel="stylesheet" href="../css/listing.css">
+
   <!-- 2: Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-  <style>
-    body {
-      text-align: center;
-    } 
-  </style>
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary p-3 mb-3">
-    <div class="container">
-      <h3 class="navbar-brand mx-auto">Pacientes Cadastrados</h3> 
-    </div>
-    <div class="d-flex">
-      <a href="../home.php" class="btn btn-danger me-5">Voltar</a>
-    </div>
-  </nav>
-  <div class="m-4">
+  <header>
+    <h3>Pacientes Cadastrados</h3> 
+    <a href="../home.php"class="material-symbols-outlined">logout</a>
+  </header>
+  <div class=".table-responsive{-sm|-md|-lg|-xl}">
     <table class="table table-striped table-hover">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Paciente</th>
           <th scope="col">CPF</th>
-          <th scope="col">Sexo</th>
           <th scope="col">Email</th>
           <th scope="col">Telefone</th>
           <th scope="col">Data de Nascimento</th>
-          <th scope="col">Profissional</th>
-          <th scope="col">...</th>
+          <th scope="col">Especialista</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -72,9 +64,8 @@
           while($data = mysqli_fetch_assoc($result)){
             echo "<tr>";
             echo "<td>{$data['id']}</td>";
-            echo "<td>{$data['username']}</td>";
+            echo "<td>{$data['name']}</td>";
             echo "<td>{$data['cpf']}</td>";
-            echo "<td>{$data['gender']}</td>";
             echo "<td>{$data['email']}</td>";
             echo "<td>{$data['phone']}</td>";
             echo "<td>{$data['birthday']}</td>";
@@ -96,6 +87,7 @@
         ?>
       </tbody>
     </table>
+    <footer>&copy Real Smile</footer>
   </div>
 </body>
 </html>

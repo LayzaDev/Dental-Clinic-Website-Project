@@ -27,10 +27,10 @@ header a {
   background-color: #0b8fac;
   border: none;
   position: absolute;
-  width: 8%;
-  right: 50px;
+  width: 6%;
+  right: 40px;
   border-radius: 20px;
-  padding: 8px;
+  padding: 10px 0;
   font-size: 15px;
   color: #ffff;
   text-decoration: none;
@@ -87,7 +87,7 @@ footer p {
   }
 
   header a {
-    width: 15%;
+    width: 8%;
     font-size: 17px;
   }
 
@@ -115,31 +115,12 @@ footer p {
   }
 
   header a {
-    width: 10%;
+    width: 7%;
+    font-size: 14px;
   }
 
   nav ul {
     height: 6vh;
-  }
-
-  nav ul li a {
-    font-size: 16px;
-  }
-
-  header a {
-    width: 15%;
-  }
-
-  header a {
-    font-size: 14px;
-  }
-  
-  footer {
-    padding: 10px;
-  }
-
-  footer p {
-    font-size: 16px;
   }
 }
 
@@ -150,8 +131,7 @@ footer p {
   }
 
   header a {
-    width: 13%;
-    font-size: 12px;
+    width: 14%;
     right: 10px;
   }
 
@@ -160,11 +140,7 @@ footer p {
   }
 
   nav ul li a {
-    font-size:11px;
-  }
-
-  footer {
-    padding: 10px;
+    font-size:12px;
   }
 
   footer p {

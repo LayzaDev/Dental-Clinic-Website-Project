@@ -1,11 +1,15 @@
 main {
-  max-width: 300px;
-  padding: 0.5rem 2rem 2rem;
-  display: block;
-  margin: 5.5rem auto;
+  width: 350px;
+  padding: 0.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
   border-radius: 0.3rem;
   color: #5d5d5d;
   font-size: 1.1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
   box-shadow: 0 0 5px #6d6d6d;
   font-family: Verdana, Arial, sans-serif;
 }
@@ -14,6 +18,24 @@ h2 {
   text-align: center;
   color: #0b8fac;
 }
+
+hr {
+  padding: 0.5px;
+  background-color: #aaaaf7;
+  opacity: 0.6;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form a {
+  color: #a50802;
+  font-size: 15px;
+} 
 
 div {
   margin-bottom: 10px;
@@ -31,16 +53,16 @@ div {
 .validationSpan {
   color: red;
   font-size: 14px;
+  margin-top: 15px;
 }
 
 .inputSubmit {
-  display: flex;
   width: 60%;
-  justify-content: center;
-  margin: 1.5rem auto;
+  margin: 1rem;
   background-color: #0b8fac;
   color: #fff;
   cursor: pointer;
+  border: 1px solid #011c22;
 }
 
 .inputSubmit:hover {
@@ -62,4 +84,55 @@ div {
 
 #loginFailMsg {
   display: none;
+}
+
+footer {
+  background-color: #0b8fac;
+  padding: 2px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+footer p {
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+}
+
+@media (max-width: 1024px){
+  header,
+  header img {
+    height: 9vh;
+  }
+
+  footer {
+    padding: 6px;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 720px){
+  main {
+    width: 300px;
+    padding: 0.5rem 2rem 2rem;
+  }
+}
+
+@media (max-width: 480px){
+  main {
+    width: 65%;
+  }
+}
+
+@media (max-width: 375px){
+
+  main {
+    width: 70%;
+    padding: 0.5rem 1.5rem 1.5rem;
+  }
 }

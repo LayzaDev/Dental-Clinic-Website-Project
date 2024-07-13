@@ -16,28 +16,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restrita</title>
+  <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="css/index.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
   <header>
-    <div>
-      <img src="../image/logotipo.jpeg" alt="logo">
-    </div>
-    <div class="divh3">
-      <h3>Área Restrita</h3>
-    </div>
-    <div class="divLink">
-      <a href="../php/sair.php">Sair</a>
-    </div>
+    <img src="../image/logotipo.jpeg" alt="logo">
+    <a href="../php/sair.php" class="material-symbols-outlined">logout</a>
   </header>
+  <hr>
   <main>
-    <div id="buttons">
+    <div class="buttons">
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
           <a href="register/employeeRegistration.php" class="btn">Cadastrar Funcionário</a>
         </div>
-        <div class="col-12 col-md-8 divDesc">
+        <div class="col-12 col-md-8 divDescription">
           <p>Clique para cadastrar um novo funcionário no sistema</p>
         </div>
       </div>
@@ -45,7 +41,7 @@
         <div class="col-12 col-md-4 divBtn">
           <a href="listing/listOfEmployees.php" class="btn">Listagem de Funcionários</a>
         </div>
-        <div class="col-12 col-md-8 divDesc">
+        <div class="col-12 col-md-8 divDescription">
           <p>Clique para visualizar os funcionarios da Real Smile</p>
         </div>
       </div>
@@ -53,15 +49,15 @@
         <div class="col-12 col-md-4 divBtn">
           <a href="listing/listOfPatients.php" class="btn">Listagem de Pacientes</a>
         </div>
-        <div class="col-12 col-md-8 divDesc">
+        <div class="col-12 col-md-8 divDescription">
           <p>Clique para visualizar os pacientes da Real Smile</p>
         </div>
       </div>
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="listing/listOfSchedulings.php" class="btn">Agendamentos</a>
+          <a href="listing/listOfSchedulings.php" class="btn">Consultas Agendadas</a>
         </div>
-        <div class="col-12 col-md-8 divDesc">
+        <div class="col-12 col-md-8 divDescription">
           <p>Clique para visualizar os agendamentos do mês</p>
         </div>
       </div>

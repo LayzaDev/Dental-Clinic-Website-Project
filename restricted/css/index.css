@@ -3,136 +3,84 @@
   font-family: sans-serif;
 }
 
+hr {
+  padding: 0.5px;
+  background-color: #aaaaf7;
+  opacity: 0.6;
+}
+
 main {
   width: 100%;
 }
 
-header {
-  height: 13vh;
+.buttons {
   display: flex;
-  justify-content: space-between;
-  text-align: center;
-  align-items: center;
-  position: relative;
-  border-bottom: 1px solid #056277;
-}
-
-header img {
-  height: 12vh;
-}
-
-header .divh3 {
-  margin-right: 10%;
-  color: #056277;
-}
-
-header .divLink {
-  margin-bottom: 2.5%;
-}
-
-header .divLink a {
-  font-size: 12px;
-  text-decoration: none;
-  width: 8%;
-  padding: 8px;
-  right: 50px;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  background-color: #056277;
-}
-
-header .divLink a:hover {
-  background-color: #097188;
-  transition: background 0.5s;
-}
-
-#buttons {
   padding: 10px 15px;
   width: 80%;
-  margin: 30px auto;
 }
 
-#buttons .btn {
-  border: 1px solid #000;
-  display: flex;
-  margin: 8px auto;
-  align-items: center;
-}
-
-#buttons .row {
-  border-bottom: 1px solid #ccc;
-  margin-top:8px;
-}
-
-#buttons a:hover {
-  background-color: #cdcfcf;
-  color: #2e2e2e;
+.buttons a:hover {
+  background-color: #0f7373;
+  color: #fff;
+  opacity: 0.7;
   border: 1px solid #808080;
 }
 
-#buttons .row > .divDesc{
+.buttons .row {
+  border-bottom: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.row a {
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+}
+
+.buttons .row > .divDescription{
   padding-top: 8px;
 }
 
 footer {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   background-color: #056277;
-  padding: 20px;
+  padding: 0;
 }
 
 footer p {
-  text-align: center;
   color: #fff;
-  font-size: 18px;
+  font-size: 15px;
+  padding-top: 20px;
 }
 
-@media (max-width: 720px){
-  header img {
-    height: 8vh;
-  }
+@media (max-width: 780px){
 
-  header .divh3 {
-    margin-right: 25%;
-  }
-
-  header div h3 {
-    font-size: 1.5rem;
-  }
-
-  header .divLink a {
-    font-size: 0.8em;
-    width: 12%;
-    right: 30px;
-    margin-bottom: 0;
-  }
-
-  #buttons .btn {
-    justify-content: center;
-  }
-
-  footer p {
-    font-size: 16px;
+  .divBtn a,
+  .divDescription p {
+    font-size: 15px;
   }
 }
 
 @media(max-width: 480px){
 
-  header img {
-    height: 5vh;
-  }
-
-  header .divh3 h3{
-    font-size: 1.2rem;
-  }
-
-  header .divLink a {
-    width: 15%;
-    right: 30px;
+  .divBtn a,
+  .divDescription p {
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
   }
 
   footer {
-    padding: 10px;
+    padding: 0px;
   }
 
   footer p {

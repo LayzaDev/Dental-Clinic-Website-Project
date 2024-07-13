@@ -24,13 +24,13 @@ main {
   }
 
   .gridContainer img {
-    height: 25vh;
+    height: 27vh;
   }
 }
 
 @media(max-width: 720px){
   .gridContainer img {
-    height: 20vh;
+    height: 25vh;
   }
 }
 

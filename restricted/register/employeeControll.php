@@ -5,19 +5,18 @@
 
     $name = htmlspecialchars(trim($_POST["name"] ?? ""));
     $cpf = htmlspecialchars(trim($_POST["cpf"] ?? ""));
-    $gender = htmlspecialchars(trim($_POST["gender"] ?? ""));
     $phone = htmlspecialchars(trim($_POST["phone"] ?? ""));
     $birthday = htmlspecialchars(trim($_POST["birthday"] ?? ""));
 
     $birthday = date('Y-m-d', strtotime($birthday)); // Converte a data para o formato Y-m-d
 
     $sql = <<<SQL
-      INSERT INTO Person (name, cpf, gender, phone, birthday)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO Person (name, cpf, phone, birthday)
+      VALUES (?, ?, ?, ?)
     SQL;
 
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param("sssss", $name, $cpf, $gender, $phone, $birthday);
+    $stmt->bind_param("ssss", $name, $cpf, $phone, $birthday);
     if(!$stmt->execute()) throw new Exception("Falha na primeira inserção");
 
     $personId = $connection->insert_id;

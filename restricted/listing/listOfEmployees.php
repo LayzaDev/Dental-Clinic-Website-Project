@@ -35,27 +35,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Restrita</title>
+
+  <link rel="stylesheet" href="../css/listing.css">
 
   <!-- 2: Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-  <style>
-    body {
-      text-align: center;
-    } 
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary p-3 mb-3">
-    <div class="container">
-      <h3 class="navbar-brand mx-auto">Funcionários Cadastrados</h3> 
-    </div>
-    <div class="d-flex">
-      <a href="../home.php" class="btn btn-danger me-5">Voltar</a>
-    </div>
-  </nav>
-  <div class="m-4">
+  <header>
+    <h1>Funcionários Cadastrados</h1> 
+    <a href="../home.php"class="material-symbols-outlined">logout</a>
+  </header>
+  <div class=".table-responsive{-sm|-md|-lg|-xl}">
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -64,13 +59,13 @@
           <th scope="col">CPF</th>
           <th scope="col">Telefone</th>
           <th scope="col">Email</th>
-          <th scope="col">Início do contrato</th>
+          <th scope="col">Contratação</th>
           <th scope="col">Salário</th>
           <th scope="col">CRO</th>
-          <th scope="col">Especialidade</th>
+          <th scope="col">Área</th>
           <th scope="col">Cidade</th>
-          <th scope="col">Estado</th>
-          <th scope="col">...</th>
+          <th scope="col">UF</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -105,6 +100,7 @@
         ?>
       </tbody>
     </table>
+    <footer>&copy Real Smile</footer>
   </div>
 </body>
 </html>

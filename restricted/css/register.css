@@ -1,48 +1,278 @@
-fieldset > legend {
-  font-size: 1.2rem;
-  margin-left: 12.5%;
-  margin-top: 1.5%;
-  color: #3f3e3e;
+body {
+  box-sizing: border-box;
 }
 
-div.row {
+header, 
+header img {
+  display: flex;
+  justify-content: center;
+  height: 10vh;
+  background-color: #fff;
+}
+
+hr {
+  padding: 0.3px;
+  background-color: #aaaaf7;
+  opacity: 0.6;
+}
+
+main {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.form-group label {
-  padding-top: 10px;
-  color: #545454;
+form {
+  width: 60%;
+  margin: 20px 0px 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 }
 
-.form-group input, .form-group select {
-  padding: 3px;
-  color: #545454;
+fieldset {
+  border: none;
 }
 
-.form-group input:focus, .form-group select:focus {
-  box-shadow: 0 0 0 0;
+legend {
+  font-size: 18px;
+  color: #044756;
+  margin: 0px 0px 10px 5px ;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 7px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  position: relative;
+}
+
+input,
+select {
+  width: 100%;
+  border: none;
   outline: none;
+  opacity: 0.8;
+  background: none;
+  border-bottom: 1px solid #035f74;
 }
 
-.divBtn {
+.labelInput, 
+.labelSelect {
+  font-size: 15px;
+  color: #565656;
+}
+
+.labelInput {
+  top: 0px;
+  left: 0px;
+  transition: .5s;
+  position: absolute;
+  pointer-events: none;
+}
+
+.inputs:focus ~ .labelInput,
+.inputs:valid ~ .labelInput{
+  top: -20px;
+  font-size: 13px;
+  color: #0b8fac;
+  font-weight: 500;
+}
+
+.specialItem {
+  margin-top: 29px;
+}
+
+.col-8 {grid-column: span 8;}
+.col-4 {grid-column: span 4;}
+
+.btn {
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
+  justify-content: space-evenly;
+  margin: 15px 10px 0px;
 }
 
-.divBtn button {
-  background-color: #056277;
-  font-size: 1rem;
+.btn a, 
+.btn button {
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background-color: #000;
 }
 
-.divBtn button:hover {
-  background-color: #097188;
-  transition: 0.5s;
-}
-
-.sucessRegister {
-  display: none;
+.btn a {
+  width: 85px;
+  font-size: 14px;
   text-align: center;
-  color: #008000;
+  text-decoration: none;
+  background-color: #6d0606;
+}
+
+.btn a:hover {
+  transition: 0.5s;
+  background-color: #850404;
+}
+
+.btn button {
+  width: 110px;
+  font-size: 15px;
+  background-color:#05586b;
+}
+
+.btn button:hover {
+  transition: 0.5s;
+  background-color: #066a80;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 2px;
+  position: fixed;
+  background-color: #0b8fac;
+}
+
+footer p {
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 1024px){
+  header,
+  header img {
+    height: 7vh;
+  }
+
+  form {
+    width: 80%;
+    margin: 0;
+  }
+
+  legend {
+    font-size: 20px;
+    margin-left: 6px;
+    margin-bottom: 12px;
+  }
+
+  .container {
+    gap: 7px;
+  }
+
+  .labelInput, 
+  .labelSelect,
+  .inputs {
+    font-size: 15px;
+  }
+
+  footer {
+    padding: 4px;
+  }
+}
+
+@media (max-width: 800px){
+
+  form {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px){
+
+  header, header img {
+    height: 6vh;
+  }
+
+  main {
+    height: 100vh;
+  }
+
+  form {
+    width: 80%;
+    margin: 0px;
+    margin-top: 80px;
+  }
+
+  legend {
+    font-size: 17px;
+    margin-bottom: 0px;
+  }
+
+  .container {
+    gap: 0px;
+  }
+
+  .item {
+    margin: 20px 0px 0px;
+  }
+
+  .labelInput, 
+  .labelSelect {
+    font-size: 12px;
+  }
+
+  .inputs:focus ~ .labelInput,
+  .inputs:valid ~ .labelInput{
+    top: -16px;
+    font-size: 11px;
+  }
+
+  .col-8 {grid-column: span 12;}
+  .col-4 {grid-column: span 12;}
+
+  .btn {
+    margin: 10px 5px 0px;
+  }
+
+  .btn a, 
+  .btn button {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .btn a {
+    width: 70px;
+  }
+
+  .btn button {
+    width: 90px;
+  }
+
+  footer {
+    padding: 1px;
+  }
+
+  footer p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 375px){
+
+  main {
+    height: 100vh;
+  }
+
+  form {
+    margin-top: 50px;
+  }
+
+  hr {
+    padding: 0.3px;
+  }
+
+  legend {
+    font-size: 17px;
+  }
+
 }
