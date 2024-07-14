@@ -15,13 +15,13 @@ body {
 .card {
   padding: 1em;
   max-width: 300px;
-  margin-bottom: 18px;
+  margin: 10px 5px 0px;
   box-sizing: border-box;
 }
 
 .card img {
   width: 100%;
-  height: 25vh;
+  height: 23vh;
 }
 
 .card h2 {
@@ -30,7 +30,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   padding: 0;
-  margin: 5px 0 20px;
+  margin: 10px 0;
   color: #1949ae;
 }
 
@@ -60,7 +60,7 @@ body {
   color: #fff;
   background-color: #0b778f;
   border: 1px solid #29455b;
-  padding: 5px;
+  padding: 3px;
   font-size: 14px;
   border-radius: 5px;
   box-shadow: 1px 1px 2px #29455b;
@@ -81,9 +81,12 @@ body {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  padding: 8px;
+}
+
+footer p {
+  font-size: 16px;
 }
 
 @media (max-width: 1024px){
