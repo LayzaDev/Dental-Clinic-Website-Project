@@ -35,7 +35,7 @@ form {
 form a {
   color: #a50802;
   font-size: 15px;
-} 
+}
 
 div {
   margin-bottom: 10px;
@@ -46,7 +46,7 @@ div {
 }
 
 .inputs {
-  width: 100%; 
+  width: 100%;
   margin: 0.5rem 0;
 }
 
@@ -70,7 +70,8 @@ div {
   transition: background 0.5s;
 }
 
-.inputs, .inputSubmit{
+.inputs,
+.inputSubmit {
   font-size: 17px;
   padding: 0.4rem;
   outline: none;
@@ -109,7 +110,7 @@ footer p {
   font-size: 13px;
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1024px) {
   header,
   header img {
     height: 9vh;
@@ -124,21 +125,20 @@ footer p {
   }
 }
 
-@media (max-width: 720px){
+@media (max-width: 720px) {
   main {
     width: 300px;
     padding: 0.5rem 2rem 2rem;
   }
 }
 
-@media (max-width: 480px){
+@media (max-width: 480px) {
   main {
     width: 65%;
   }
 }
 
-@media (max-width: 375px){
-
+@media (max-width: 375px) {
   main {
     width: 70%;
     padding: 0.5rem 1.5rem 1.5rem;

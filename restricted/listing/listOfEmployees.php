@@ -9,7 +9,7 @@
   if((!isset($_SESSION['email']) == true))
   {
     unset($_SESSION['email']);
-    header("Location: ../../php/login.php");
+    header("Location: ../../login.html");
   }
 
   $logado = $_SESSION['email'];
@@ -18,10 +18,10 @@
     SELECT 
       p.id, p.name, p.cpf, p.phone, l.email,
       e.contract_start, e.wage, e.cro, s.specialty, 
-      a.city, a.uf
+      a.city, a.uf, p.status
     FROM Person p
+    INNER JOIN Login l ON p.login_id = l.id
     INNER JOIN Employee e ON e.person_id = p.id
-    INNER JOIN Login l ON e.login_id = l.id
     INNER JOIN Specialty s ON e.specialty_id = s.id
     INNER JOIN AddressBase a ON a.employee_id = e.id
     ORDER BY id
@@ -65,31 +65,33 @@
           <th scope="col">Área</th>
           <th scope="col">Cidade</th>
           <th scope="col">UF</th>
+          <th scope="col">Status</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <?php
-          while($row = $result->fetch_assoc()){
+          while($data = $result->fetch_assoc()){
             echo "<tr>";
-            echo "<td>{$row['id']}</td>";
-            echo "<td>{$row['name']}</td>";
-            echo "<td>{$row['cpf']}</td>";
-            echo "<td>{$row['phone']}</td>";
-            echo "<td>{$row['email']}</td>";
-            echo "<td>{$row['contract_start']}</td>";
-            echo "<td>{$row['wage']}</td>";
-            echo "<td>{$row['cro']}</td>";
-            echo "<td>{$row['specialty']}</td>";
-            echo "<td>{$row['city']}</td>";
-            echo "<td>{$row['uf']}</td>";
+            echo "<td>{$data['id']}</td>";
+            echo "<td>{$data['name']}</td>";
+            echo "<td>{$data['cpf']}</td>";
+            echo "<td>{$data['phone']}</td>";
+            echo "<td>{$data['email']}</td>";
+            echo "<td>{$data['contract_start']}</td>";
+            echo "<td>{$data['wage']}</td>";
+            echo "<td>{$data['cro']}</td>";
+            echo "<td>{$data['specialty']}</td>";
+            echo "<td>{$data['city']}</td>";
+            echo "<td>{$data['uf']}</td>";
+            echo "<td>{$data['status']}</td>";
             echo "<td>
-              <a class='btn btn-sm btn-primary' href='#'>
+              <a class='btn btn-sm btn-primary' href='../controll/employee/formEmployee.php?id=$data[id]'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'> 
                   <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325'/>
                 </svg>
               </a>
-              <a class='btn btn-sm btn-danger' href='#'>
+              <a class='btn btn-sm btn-danger' href='../controll/employee/cancelEmployee.php?id=$data[id]'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
                   <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z'/>
                 </svg>

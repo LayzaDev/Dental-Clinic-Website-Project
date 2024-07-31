@@ -1,21 +1,23 @@
 <?php
   
-  function insertPerson($connection){
+  function insertPerson($connection, $loginId){
     $patient = htmlspecialchars(trim($_POST["name"]));
     $cpf = htmlspecialchars(trim($_POST["cpf"]));
-    $gender = $_POST["gender"];
+    $gender = htmlspecialchars(trim($_POST["gender"]));
     $phone = htmlspecialchars(trim($_POST["phone"]));
     $birthday = $_POST["birthday"];
 
     $birthday = date('Y-m-d', strtotime($birthday)); // Converte a data para o formato Y-m-d
 
+    $status = "Ativo";
+
     $sql = <<<SQL
-      INSERT INTO Person (name, cpf, gender, phone, birthday)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO Person (name, cpf, gender, phone, birthday, status, login_id)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
     SQL;
 
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param("sssss", $patient, $cpf, $gender, $phone, $birthday);
+    $stmt->bind_param("ssssssi", $patient, $cpf, $gender, $phone, $birthday, $status, $loginId);
     if(!$stmt->execute()) throw new Exception("Falha na primeira inserção");
 
     $personId = $connection->insert_id;
@@ -44,43 +46,24 @@
   }
 
   function getEmployeeId($connection){
-
-    $professional = $_POST["professional"];
-
-    // $sql = <<<SQL
-    //   SELECT p.id FROM Person p
-    //   INNER JOIN Employee e ON e.person_id = p.id
-    //   WHERE e.id = ?;
-    // SQL;
-
-    // $stmt = $connection->prepare($sql);
-    // $stmt->bind_param("i", $professional);
-
-    // if(!$stmt->execute()) throw new Exception("Falha na consulta do profissional");
-
-    // $result = $stmt->get_result();
-
-    //return $result->fetch_assoc();
-
+    $professional = $_POST["professional"] ?? "";
     return $professional;
   }
 
   function getSpecialtyId(){
-
-    $specialtyId = $_POST["specialty"] ?? "";
-
-    return $specialtyId;
+    $specialty = $_POST["specialty"] ?? "";
+    return $specialty;
   }
 
-  function insertPatient($connection, $personId, $employeeId, $loginId){
+  function insertPatient($connection, $personId, $employeeId){
 
     $sql = <<<SQL
-      INSERT INTO Patient (person_id, employee_id, login_id)
-      VALUES (?, ?, ?)
+      INSERT INTO Patient (person_id, employee_id)
+      VALUES (?, ?)
     SQL;
 
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param("iii", $personId, $employeeId, $loginId);
+    $stmt->bind_param("ii", $personId, $employeeId);
     if(!$stmt->execute()) throw new Exception("Falha na primeira inserção");
 
     $patientId = $connection->insert_id;
@@ -109,19 +92,19 @@
 
   try {
 
-    include_once("../database/conexaoMySQL.php");
+    include_once("../../database/conexaoMySQL.php");
 
     $connection = mysqlConnect();
 
     $connection->begin_transaction();
-
-    $personId = insertPerson($connection);
     
     $loginId = insertLogin($connection);
 
+    $personId = insertPerson($connection, $loginId);
+
     $employeeId = getEmployeeId($connection);
 
-    $patientId = insertPatient($connection, $personId, $employeeId, $loginId);
+    $patientId = insertPatient($connection, $personId, $employeeId);
 
     $specialtyId = getSpecialtyId();
 

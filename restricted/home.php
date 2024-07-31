@@ -24,14 +24,14 @@
 <body>
   <header>
     <img src="../image/logotipo.jpeg" alt="logo">
-    <a href="../php/sair.php" class="material-symbols-outlined">logout</a>
+    <a href="../session/sair.php" class="material-symbols-outlined">logout</a>
   </header>
   <hr>
   <main>
     <div class="buttons">
       <div class="row">
         <div class="col-12 col-md-4 divBtn">
-          <a href="register/employeeRegistration.php" class="btn">Cadastrar Funcionário</a>
+          <a href="register/employee.php" class="btn">Cadastrar Funcionário</a>
         </div>
         <div class="col-12 col-md-8 divDescription">
           <p>Clique para cadastrar um novo funcionário no sistema</p>

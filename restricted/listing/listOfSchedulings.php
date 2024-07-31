@@ -9,7 +9,7 @@
   if((!isset($_SESSION['email']) == true))
   {
     unset($_SESSION['email']);
-    header("Location: ../../php/login.php");
+    header("Location: ../../session/login.php");
   }
 
   $logado = $_SESSION['email'];;
@@ -18,18 +18,19 @@
     SELECT 
       s.id,
       (SELECT p1.name FROM Person p1 
-       JOIN Patient pt ON pt.person_id = p1.id 
-       WHERE pt.id = s.patient_id) 
-       AS patient,
+      JOIN Patient pt ON pt.person_id = p1.id 
+      WHERE pt.id = s.patient_id) 
+      AS patient,
       s.consultation_date, 
       s.consultation_time, 
       (SELECT p2.name FROM Person p2 
-       JOIN Employee e ON e.person_id = p2.id 
-       WHERE e.id = s.employee_id) 
-       AS employee,
+      JOIN Employee e ON e.person_id = p2.id 
+      WHERE e.id = s.employee_id) 
+      AS employee,
       (SELECT sp.specialty FROM Specialty sp 
-       WHERE sp.id = s.specialty_id) 
-       AS specialty
+      WHERE sp.id = s.specialty_id) 
+      AS specialty,
+      s.status
     FROM Scheduling s
     ORDER BY s.id
   SQL;
@@ -53,7 +54,7 @@
 </head>
 <body>
   <header>
-    <h3>Funcionários Cadastrados</h3> 
+    <h3>Agendamentos</h3> 
     <a href="../home.php"class="material-symbols-outlined">logout</a>
   </header>
   <div class=".table-responsive{-sm|-md|-lg|-xl}">
@@ -66,6 +67,7 @@
           <th scope="col">Horário</th>
           <th scope="col">Profissional</th>
           <th scope="col">Especialidade</th>
+          <th scope="col">Status</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -79,6 +81,7 @@
             echo "<td>{$data['consultation_time']}</td>";
             echo "<td>{$data['employee']}</td>";
             echo "<td>{$data['specialty']}</td>";
+            echo "<td>{$data['status']}</td>";
             echo "<td>
               <a class='btn btn-sm btn-primary' href='#'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>

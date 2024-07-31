@@ -1,6 +1,6 @@
 <?php
 
-  include_once("../database/conexaoMySQL.php");
+  include_once("../../database/conexaoMySQL.php");
 
   $connection = mysqlConnect();
 
@@ -19,11 +19,9 @@
 
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("i", $specialtyId);
-    
     if(!$stmt->execute()) throw new Exception("Falha na consulta do profissional");
 
     $result = $stmt->get_result();
-    // $row = $result->fetch_assoc();
 
     $professionals = array();
 

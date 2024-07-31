@@ -59,7 +59,7 @@ legend {
 
 .item,
 .specialItem {
-  display: flex;  
+  display: flex;
   flex-direction: column;
   position: relative;
 }
@@ -90,7 +90,7 @@ select {
   opacity: 0.8;
 }
 
-.labelInput, 
+.labelInput,
 .labelSelect {
   font-size: 15px;
   color: #565656;
@@ -101,20 +101,26 @@ select {
   top: 0px;
   left: 0px;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .inputs:focus ~ .labelInput,
-.inputs:valid ~ .labelInput{
+.inputs:valid ~ .labelInput {
   top: -20px;
   font-size: 13px;
   color: #0b8fac;
   font-weight: 500;
 }
 
-.col-8 {grid-column: span 8;}
-.col-6 {grid-column: span 6;}
-.col-4 {grid-column: span 4;}
+.col-8 {
+  grid-column: span 8;
+}
+.col-6 {
+  grid-column: span 6;
+}
+.col-4 {
+  grid-column: span 4;
+}
 
 .btn {
   display: flex;
@@ -122,7 +128,7 @@ select {
   margin: 35px 10px 0px;
 }
 
-.btn a, 
+.btn a,
 .btn button {
   padding: 10px;
   color: #fff;
@@ -148,7 +154,7 @@ select {
 .btn button {
   width: 110px;
   font-size: 15px;
-  background-color:#05586b;
+  background-color: #05586b;
 }
 
 .btn button:hover {
@@ -171,7 +177,7 @@ footer p {
   font-size: 13px;
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1024px) {
   header,
   header img {
     height: 7vh;
@@ -192,7 +198,7 @@ footer p {
     gap: 7px;
   }
 
-  .labelInput, 
+  .labelInput,
   .labelSelect {
     font-size: 16px;
   }
@@ -211,8 +217,7 @@ footer p {
   }
 }
 
-@media (max-width: 800px){
-
+@media (max-width: 800px) {
   form {
     width: 75%;
     margin: 0;
@@ -222,7 +227,7 @@ footer p {
     gap: 7px;
   }
 
-  .labelInput, 
+  .labelInput,
   .labelSelect {
     font-size: 16px;
   }
@@ -241,13 +246,12 @@ footer p {
   }
 }
 
-@media (max-width: 600px){
-
+@media (max-width: 600px) {
   form {
     width: 65%;
   }
 
-  .labelInput, 
+  .labelInput,
   .labelSelect {
     font-size: 16px;
   }
@@ -265,13 +269,15 @@ footer p {
     font-size: 14px;
   }
 
-  .col-8 {grid-column: span 12;}
-  .col-4 {grid-column: span 12;}
-
+  .col-8 {
+    grid-column: span 12;
+  }
+  .col-4 {
+    grid-column: span 12;
+  }
 }
 
-@media (max-width: 480px){
-
+@media (max-width: 480px) {
   main {
     height: 95vh;
   }
@@ -285,7 +291,7 @@ footer p {
     font-size: 18px;
   }
 
-  .labelInput, 
+  .labelInput,
   .labelSelect {
     font-size: 15px;
   }
@@ -294,7 +300,8 @@ footer p {
     width: 98%;
   }
 
-  .inputPhone, .inputBirthday {
+  .inputPhone,
+  .inputBirthday {
     width: 94%;
   }
 
@@ -302,7 +309,7 @@ footer p {
     margin: 8px 5px 0px;
   }
 
-  .btn a, 
+  .btn a,
   .btn button {
     font-size: 14px;
     padding: 8px;
@@ -317,9 +324,8 @@ footer p {
   }
 }
 
-@media (max-width: 375px){
-
-  header, 
+@media (max-width: 375px) {
+  header,
   header img {
     height: 9vh;
   }
@@ -362,7 +368,7 @@ footer p {
     margin-top: 12px;
   }
 
-  .labelInput, 
+  .labelInput,
   .labelSelect {
     font-size: 12px;
   }
@@ -373,9 +379,15 @@ footer p {
     font-size: 11px;
   }
 
-  .col-8 {grid-column: span 12;}
-  .col-6 {grid-column: span 6;}
-  .col-4 {grid-column: span 12;}
+  .col-8 {
+    grid-column: span 12;
+  }
+  .col-6 {
+    grid-column: span 6;
+  }
+  .col-4 {
+    grid-column: span 12;
+  }
 
   .btn {
     display: flex;
@@ -383,7 +395,7 @@ footer p {
     margin: 10px 5px 0px;
   }
 
-  .btn a, 
+  .btn a,
   .btn button {
     font-size: 12px;
     padding: 6px;

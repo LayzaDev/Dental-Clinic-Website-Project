@@ -8,7 +8,7 @@
   if((!isset($_SESSION['email'])) == true)
   {
     unset($_SESSION['email']);
-    header("Location: ../../php/login.php");
+    header("Location: ../../login.html");
   }
 
   $logado = $_SESSION['email'];
@@ -30,6 +30,7 @@
 
     <!-- Links CSS -->
     <link rel="stylesheet" href="../css/register.css"> 
+
 </head>
 <body>
   <header>
@@ -40,44 +41,53 @@
     <form id="registrationForm" action="employeeControll.php" method="POST">
       <fieldset>
         <legend>Cadastro de Funcionários</legend>
-        <div class="container">
+        <div class="wrapper">
           <div class="item col-8">
-            <input class="inputs" type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" required>
             <label class="labelInput" for="name">Nome</label>
           </div>
           <div class="item col-4">
-            <input class="inputs" type="text" id="cpf" name="cpf" required>
+            <input type="text" id="cpf" name="cpf" required>
             <label class="labelInput" for="cpf">CPF</label>
-          </div> 
+          </div>
           <div class="item col-8">
-            <input class="inputs" type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" required>
             <label class="labelInput" for="email">E-mail</label>
           </div>
           <div class="item col-4">
-            <input class="inputs" type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" required>
             <label class="labelInput" for="password">Senha</label>
           </div>
-          <div class="item col-4 specialItem">
-            <input class="inputs" type="tel" id="phone" name="phone" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" maxlength="13" required>
+          <div class="item col-4">
+            <label for="gender" class="labelSelect">Sexo</label>
+            <select name="gender" id="gender" required>
+                <option value="">Selecione</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+                <option value="N/I">Prefiro não informar</option>
+            </select>
+          </div>
+          <div class="item item-special col-4">
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" maxlength="13" required>
             <label class="labelInput" for="phone">Telefone</label>
           </div>
-          <div class="item col-4 inputBirthday">
-            <label for="birthday" class="labelSelect">Data de Nascimento</label>
-            <input class="inputs" type="date" id="birthday" name="birthday" required>
-          </div>
           <div class="item col-4">
-            <label class="labelSelect" for="hiringDate" >Início do Contrato</label>
-            <input class="inputs" type="date" name="hiringDate" id="hiringDate">
+            <label for="birthday" class="labelSelect">Data de Nascimento</label>
+            <input type="date" id="birthday" name="birthday" required>
           </div>
-          <div class="item col-4 specialItem">
-            <input class="inputs" type="text" id="cro" name="cro" required>
+          <div class="item col-3">
+            <label class="labelSelect" for="contract_start" >Início do Contrato</label>
+            <input type="date" name="contract_start" id="contract_start">
+          </div>
+          <div class="item item-special col-3">
+            <input type="text" id="cro" name="cro" required>
             <label class="labelInput" for="cro">CRO</label>
           </div>
-          <div class="item col-4 specialItem">
-            <input class="inputs" type="number" id="wage" name="wage" required>
+          <div class="item item-special col-3">
+            <input type="number" id="wage" name="wage" required>
             <label class="labelInput" for="wage">Salário</label>
           </div>
-          <div class="item col-4">
+          <div class="item col-3">
             <label for="specialty" class="labelSelect">Especialidade</label>
             <select name="specialty" id="specialty" required>
               <option value="">Selecione</option>
@@ -89,19 +99,19 @@
             </select>
           </div>
           <div class="item col-4">
-            <input class="inputs" type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}" required>
+            <input type="text" id="cep" name="cep" pattern="[0-9]{5}-[0-9]{3}" required>
             <label class="labelInput" for="cep">CEP</label>
           </div>
           <div class="item col-8">
-            <input class="inputs" type="text" id="street" name="street" required>
+            <input type="text" id="street" name="street" required>
             <label class="labelInput" for="street">Logradouro</label>
           </div>
           <div class="item col-4">
-            <input class="inputs" type="text" id="houseNumber" name="houseNumber" pattern="[0-9]{5}-[0-9]{3}" required>
-            <label class="labelInput" for="houseNumber">Número</label>
+            <input type="number" id="number" name="number" pattern="[0-9]{5}-[0-9]{3}" required>
+            <label class="labelInput" for="number">Número</label>
           </div>
           <div class="item col-8">
-            <input class="inputs" type="text" id="city" name="city" required>
+            <input type="text" id="city" name="city" required>
             <label class="labelInput" for="city">Cidade</label>
           </div>  
           <div class="item col-4">
@@ -137,8 +147,8 @@
               <option value="TO">TO</option>
             </select>
           </div>
-          <div class="item col-8 specialItem">
-            <input class="inputs" type="text" id="neighborhood" name="neighborhood" required>
+          <div class="item item-special col-8">
+            <input type="text" id="neighborhood" name="neighborhood" required>
             <label class="labelInput" for="neighborhood">Bairro</label>
           </div>
         </div>
@@ -149,15 +159,6 @@
       </div>
     </form>
   </main>
-  <footer>
-      <p>&copy; Todos os direitos são reservados à Vitalize.</p>
-  </footer>
-  <script src="ajax.js"></script>
-  <script>
-    const btn = document.querySelector("#btnRegister")
-    btn.onsubmit = (e) => {
-      e.preventDefault();
-    }
-  </script>
+  <script src="../../js/ajax.js"></script>
 </body>
 </html>

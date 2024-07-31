@@ -14,14 +14,14 @@
   line-height: 1.1em;
 }
 
-.text h2{
+.text h2 {
   text-align: center;
   font-size: 1.7em;
   color: #29455b;
   padding-bottom: 2vh;
 }
 
-.text p { 
+.text p {
   font-size: 1.2em;
   color: #353638;
 }
@@ -31,7 +31,7 @@
   padding: 10px;
 }
 
-#whoAreWe section{
+#whoAreWe section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
@@ -79,10 +79,8 @@
   color: #29455b;
 }
 
-@media(max-width: 1024px){
-
-
-  #whoAreWe section{
+@media (max-width: 1024px) {
+  #whoAreWe section {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column-reverse;
@@ -115,17 +113,16 @@
   }
 }
 
-@media(max-width: 768px){
-
+@media (max-width: 768px) {
   header {
     height: 9vh;
   }
 
-  header img{
+  header img {
     height: 9vh;
   }
 
-  .text h2{
+  .text h2 {
     text-align: center;
     font-size: 1.4em;
     color: #29455b;
@@ -137,9 +134,8 @@
   }
 }
 
-@media(max-width: 480px){
-
-  .default h2{
+@media (max-width: 480px) {
+  .default h2 {
     text-align: center;
     font-size: 1.5em;
     color: #29455b;
