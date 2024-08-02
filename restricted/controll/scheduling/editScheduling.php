@@ -4,10 +4,7 @@
   $connectionDB = mysqlConnect();
 
   $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
-  if($id == 0) {
-    die ("ID inválido");
-  }
+  if($id == 0) die ("ID inválido");
 
   function updatePerson($id, $connectionDB){ 
     $name = htmlspecialchars(trim($_POST['name'] ?? ""));
@@ -41,45 +38,52 @@
     if(!$stmt2->execute()) throw new Error("Erro ao executar a 2° consulta SQL");
   }
 
-  function updateEmployeeId($id, $connectionDB) {
-    $employeeId = htmlspecialchars(trim($_POST['professional']));
+  function getSpecialtyId($connectionDB){
+    $specialtyId = htmlspecialchars(trim($_POST['specialty'] ?? ""));
 
-    $sql3 = <<<SQL
-      UPDATE Patient p
-      SET p.employee_id = ?
-      WHERE p.person_id = $id
-    SQL;
+    return $specialtyId;
+  }
 
-    $stmt3 = $connectionDB->prepare($sql3);
-    $stmt3->bind_param("i", $employeeId);
-    if(!$stmt3->execute()) throw new Error("Erro ao executar a 3° consulta SQL");
+  function getEmployeeId($connectionDB) {
+    $employeeId = htmlspecialchars(trim($_POST['employee_id']));
   }
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    updatePerson($id, $connectionDB);
-    updateLogin($id, $connectionDB);
-    updateEmployeeId($id, $connectionDB);
+    
 
-    header("Location: ../../listing/listOfPatients.php");
+    
+
+    
+
+    
+    
+
+    header("Location: ../../listing/listOfEmployees.php");
     exit();
   }
 
   $sql = <<<SQL
     SELECT 
-      p.id, 
+      s.id, 
       p.name, 
       p.cpf, 
       p.gender, 
       p.phone, 
       p.birthday, 
       l.email,
-      pt.employee_id,
+      (SELECT p2.name 
+        FROM Person p2 
+        JOIN Employee e ON p2.id = e.person_id
+        WHERE e.id = pt.employee_id) AS professional,
+      (SELECT s.specialty 
+        FROM Specialty s
+        JOIN Employee e ON s.id = e.specialty_id
+        WHERE e.id = pt.employee_id) AS field,
       p.status
     FROM Person p
-    JOIN Login l ON l.id = p.login_id
     JOIN Patient pt ON pt.person_id = p.id
-    JOIN Employee e ON pt.employee_id = e.id
+    JOIN Login l ON l.id = p.login_id
     ORDER BY p.id
     LIMIT 1;
   SQL;

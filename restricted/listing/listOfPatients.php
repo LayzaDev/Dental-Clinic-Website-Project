@@ -16,20 +16,25 @@
 
   $sql = <<<SQL
     SELECT 
-      p.id, p.name, p.cpf, p.phone, p.birthday, l.email,
-      (SELECT p1.name FROM Person p1 
-       JOIN Employee e ON p1.id = e.person_id
-       JOIN Specialty s ON s.id = e.specialty_id
-       WHERE e.id = pt.employee_id) 
-      AS professional,
-      (SELECT s.specialty FROM Specialty s 
-       JOIN Employee e ON s.id = e.specialty_id
-       WHERE e.id = pt.employee_id) 
-      AS field,
+      p.id, 
+      p.name, 
+      p.cpf, 
+      p.phone, 
+      p.birthday, 
+      l.email,
+      (SELECT p1.name 
+      FROM Person p1 
+      JOIN Employee e ON p1.id = e.person_id
+      JOIN Specialty s ON s.id = e.specialty_id
+      WHERE e.id = pt.employee_id) AS professional,
+      (SELECT s.specialty 
+      FROM Specialty s 
+      JOIN Employee e ON s.id = e.specialty_id
+      WHERE e.id = pt.employee_id) AS field,
       p.status
     FROM Person p
-    INNER JOIN Patient pt ON pt.person_id = p.id
-    INNER JOIN Login l ON l.id = p.login_id
+    JOIN Login l ON l.id = p.login_id
+    JOIN Patient pt ON pt.person_id = p.id
     ORDER BY p.id
   SQL;
 

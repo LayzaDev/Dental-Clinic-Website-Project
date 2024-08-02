@@ -3,31 +3,35 @@
 
   $connectionDB = mysqlConnect();
 
-  $id = $_GET["id"] ?? "";
+  $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+  if($id == 0) {
+    die ("ID inválido");
+  }
 
   try {
 
     $connectionDB->begin_transaction();
 
-    $sql = "SELECT status FROM Person WHERE id = ?";
+    $sql = "SELECT status FROM Scheduling WHERE id = ?";
 
     $stmt = $connectionDB->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
 
     $result = $stmt->get_result();
-    $person = $result->fetch_assoc();
+    $scheduling = $result->fetch_assoc();
 
-    $newStatus = ($person['status'] === "Ativo") ? "Inativo" : "Ativo";
+    $newStatus = ($scheduling['status'] === "Ativo") ? "Inativo" : "Ativo";
 
-    $sql = "UPDATE Person SET status = ? WHERE id = ?";
+    $sql = "UPDATE Scheduling SET status = ? WHERE id = ?";
     $stmt = $connectionDB->prepare($sql);
     $stmt->bind_param("si", $newStatus, $id);
     $stmt->execute();
 
     $connectionDB->commit();
 
-    header("Location: ../../listing/listOfPatients.php");
+    header("Location: ../../listing/listOfSchedulings.php");
 
   } catch (Exception $e) {
     $connectionDB->rollback();

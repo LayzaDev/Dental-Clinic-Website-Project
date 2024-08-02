@@ -17,11 +17,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agendamentos</title>
+  <link rel="stylesheet" href="../../css/index.css" />
   <link rel="stylesheet" href="../css/register.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
   <header>
     <img src="../../image/logotipo.jpeg" alt="logo">
+    <a href="../../index.html" class="material-symbols-outlined">logout</a>
   </header>
   <hr>
   <main>
