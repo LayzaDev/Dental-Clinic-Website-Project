@@ -16,26 +16,20 @@
 
   $sql = <<<SQL
     SELECT 
-      p.id, 
-      p.name, 
-      p.cpf, 
-      p.phone, 
-      p.birthday, 
-      l.email,
-      (SELECT p1.name 
-      FROM Person p1 
-      JOIN Employee e ON p1.id = e.person_id
-      JOIN Specialty s ON s.id = e.specialty_id
-      WHERE e.id = pt.employee_id) AS professional,
-      (SELECT s.specialty 
-      FROM Specialty s 
-      JOIN Employee e ON s.id = e.specialty_id
-      WHERE e.id = pt.employee_id) AS field,
-      p.status
-    FROM Person p
-    JOIN Login l ON l.id = p.login_id
-    JOIN Patient pt ON pt.person_id = p.id
-    ORDER BY p.id
+      A.id, 
+      A.name, 
+      A.gender,
+      A.cpf, 
+      A.phone, 
+      A.birthday, 
+      B.email,
+      A.status
+    FROM Person A
+    JOIN Login B 
+      ON A.login_id = B.id 
+    JOIN Patient C 
+      ON A.id = C.person_id 
+    ORDER BY A.id
   SQL;
 
   $result = $connection->query($sql);
@@ -61,17 +55,16 @@
     <a href="../home.php"class="material-symbols-outlined">logout</a>
   </header>
   <div class=".table-responsive{-sm|-md|-lg|-xl}">
-    <table class="table table-striped table-hover">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Paciente</th>
+          <th scope="col">Gênero</th>
           <th scope="col">CPF</th>
           <th scope="col">Email</th>
           <th scope="col">Telefone</th>
           <th scope="col">Data de Nascimento</th>
-          <th scope="col">Especialista</th>
-          <th scope="col">Área</th>
           <th scope="col">Status</th>
           <th scope="col"></th>
         </tr>
@@ -82,12 +75,11 @@
             echo "<tr>";
             echo "<td>{$data['id']}</td>";
             echo "<td>{$data['name']}</td>";
+            echo "<td>{$data['gender']}</td>";
             echo "<td>{$data['cpf']}</td>";
             echo "<td>{$data['email']}</td>";
             echo "<td>{$data['phone']}</td>";
             echo "<td>{$data['birthday']}</td>";
-            echo "<td>{$data['professional']}</td>";
-            echo "<td>{$data['field']}</td>";
             echo "<td>{$data['status']}</td>";
             echo "<td>
               <a class='btn btn-sm btn-primary' href='../controll/patient/formPatient.php?id=$data[id]'>

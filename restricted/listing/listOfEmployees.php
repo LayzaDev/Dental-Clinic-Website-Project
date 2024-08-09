@@ -16,15 +16,28 @@
 
   $sql = <<<SQL
     SELECT 
-      p.id, p.name, p.cpf, p.phone, l.email,
-      e.contract_start, e.wage, e.cro, s.specialty, 
-      a.city, a.uf, p.status
-    FROM Person p
-    INNER JOIN Login l ON p.login_id = l.id
-    INNER JOIN Employee e ON e.person_id = p.id
-    INNER JOIN Specialty s ON e.specialty_id = s.id
-    INNER JOIN AddressBase a ON a.employee_id = e.id
-    ORDER BY id
+      A.id, 
+      A.name, 
+      A.cpf, 
+      A.phone, 
+      B.email,
+      C.contract_start, 
+      C.wage, 
+      C.cro, 
+      D.specialty, 
+      E.city, 
+      E.uf, 
+      A.status
+    FROM Person A
+    JOIN Login B 
+      ON A.login_id = B.id
+    JOIN Employee C 
+      ON A.id = C.person_id
+    JOIN Specialty D 
+      ON C.specialty_id = D.id
+    JOIN AddressBase E 
+      ON C.id = E.employee_id
+    ORDER BY A.id
   SQL;
 
   $result = $connection->query($sql);
@@ -51,7 +64,7 @@
     <a href="../home.php"class="material-symbols-outlined">logout</a>
   </header>
   <div class=".table-responsive{-sm|-md|-lg|-xl}">
-    <table class="table table-striped table-hover">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">#</th>

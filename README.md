@@ -34,11 +34,6 @@ The following tools were used in the construction of the project:
 <p><b>Appointments:</b> Allows clients to schedule appointments based on availability.</p>
 <p><b>Login:</b> Facilitates secure access for both clients and clinic professionals.</p>
     
-<h2>How to access the restricted part?</h2>
-<p>Use one of the emails and passwords below:</p>
-<p><b>Email 1: </b> layza@gmail.com</p>
-<p><b>Senha 1: </b> 1977</p>
-
 <h2>Status</h2>
 <h4> 
 	🚧 In progress... 🚧

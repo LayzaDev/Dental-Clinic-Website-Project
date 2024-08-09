@@ -11,20 +11,21 @@
 
   $sql = <<<SQL
     SELECT 
-      p.id, 
-      p.name, 
-      p.cpf, 
-      p.gender, 
-      p.phone, 
-      p.birthday, 
-      l.email,
-      pt.employee_id,
-      p.status
-    FROM Person p
-    JOIN Login l ON l.id = p.login_id
-    JOIN Patient pt ON pt.person_id = p.id
-    WHERE p.id = ?
-    LIMIT 1
+      A.id, 
+      A.name, 
+      A.cpf, 
+      A.gender, 
+      A.phone, 
+      A.birthday, 
+      B.email,
+      C.employee_id,
+      A.status
+    FROM Person A
+    JOIN Login B 
+      ON A.login_id = B.id
+    JOIN Patient C 
+      ON A.id = C.person_id
+    WHERE A.id = ?
   SQL;
 
   $stmt = $connectionDB->prepare($sql);
@@ -95,14 +96,14 @@
           </div>
           <div class="item col-6">
             <label for="specialty" class="labelSelect">Especialidade</label>
-            <select name="specialty" id="specialty">
-              <option selected>Selecione</option>
+            <select name="specialty" id="specialty" onchange="loadSelectProfessionals()">
+              <option value="">Selecione</option>
               <?php
                 $sqlSpecialty = "SELECT * FROM Specialty ORDER BY id";
                 $resultSpecialty = $connectionDB->query($sqlSpecialty);
 
                 while($row = $resultSpecialty->fetch_assoc()){
-                  $selected = $row['id'] == $data['employee_id'] ? 'selected' : '';
+                  $selected = $row['id'] == $data['specialty_id'] ? 'selected' : '';
                   echo <<<HTML
                     <option value="{$row['id']}" $selected>{$row['specialty']}</option>
                   HTML;
@@ -127,6 +128,8 @@
   <footer>
     <p>&copy By Layza Nauane</p>
   </footer>
-  <script src="../../../js/scheduling.js"></script>
+  <script src="../../../js/searchProfessionals.js"></script>
+  <script src="../../../js/loadProfessionals.js"></script>
+
 </body>
 </html>

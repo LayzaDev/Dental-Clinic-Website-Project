@@ -18,7 +18,7 @@ main {
   border-radius: 5px;
 }
 
-@media (max-width: 1024px) {
+@media(max-width: 1024px){
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -28,13 +28,13 @@ main {
   }
 }
 
-@media (max-width: 720px) {
+@media(max-width: 720px){
   .gridContainer img {
     height: 25vh;
   }
 }
 
-@media (max-width: 480px) {
+@media(max-width: 480px){
   .gridContainer img {
     height: 20vh;
   }

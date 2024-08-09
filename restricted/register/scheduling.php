@@ -1,14 +1,7 @@
 <?php
   include_once("../../database/conexaoMySQL.php");
 
-  $connection = mysqlConnect();
-
-  $sql = <<<SQL
-    SELECT * FROM Specialty
-    ORDER BY id
-  SQL;
-
-  $result = $connection->query($sql);
+  $connectionDB = mysqlConnect();
 ?>
 
 <!DOCTYPE html>
@@ -67,11 +60,16 @@
           </div>
           <div class="item col-6">
             <label for="specialty" class="labelSelect">Especialidade</label>
-            <select name="specialty" id="specialty" required>
+            <select name="specialty" id="specialty" onchange="loadSelectProfessionals()" required>
               <option value="">Selecione</option>
               <?php
+                $sql = "SELECT * FROM Specialty ORDER BY id";
+                $result = $connectionDB->query($sql);
+
                 while($row = $result->fetch_assoc()){
-                  echo '<option value="' . $row['id'] . '">' . $row['specialty'] . '</option>';
+                  echo <<<HTML
+                    <option value="{$row['id']}" $selected>{$row['specialty']}</option>;
+                  HTML;
                 } 
               ?>
             </select>
@@ -109,6 +107,7 @@
   <footer>
     <p>&copy By Layza Nauane</p>
   </footer>
-  <script src="../../js/scheduling.js"></script>
+  <script src="../../js/searchProfessionals.js"></script>
+  <script src="../../js/loadProfessionals.js"></script>
 </body>
 </html>

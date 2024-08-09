@@ -31,9 +31,9 @@
     $email = htmlspecialchars(trim($_POST['email'] ?? ""));
 
     $sql2 = <<<SQL
-      UPDATE Login l
-      SET l.email = ?
-      WHERE l.id = (SELECT p.login_id FROM Person p WHERE p.id = $id)
+      UPDATE Login A
+      SET A.email = ?
+      WHERE A.id = (SELECT B.login_id FROM Person B WHERE B.id = $id)
     SQL;
     
     $stmt2 = $connectionDB->prepare($sql2);
@@ -67,9 +67,9 @@
     $number = htmlspecialchars(trim($_POST['number'] ?? ""));
 
     $sql4 = <<<SQL
-      UPDATE AddressBase a
-      SET a.cep = ?, a.uf = ?, a.city = ?, a.neighborhood = ?, a.street = ?, a.number = ?
-      WHERE a.employee_id = (SELECT e.id FROM Employee e WHERE e.person_id = $id)
+      UPDATE AddressBase A
+      SET A.cep = ?, A.uf = ?, A.city = ?, A.neighborhood = ?, A.street = ?, A.number = ?
+      WHERE A.employee_id = (SELECT B.id FROM Employee B WHERE B.person_id = $id)
     SQL;
     
     $stmt4 = $connectionDB->prepare($sql4);
@@ -88,33 +88,5 @@
     exit();
   }
 
-  $sql = <<<SQL
-    SELECT 
-      p.id, 
-      p.name, 
-      p.cpf, 
-      p.gender, 
-      p.phone, 
-      p.birthday,
-      l.email, 
-      e.contract_start, 
-      e.wage, 
-      e.cro, 
-      e.specialty_id, 
-      a.cep, 
-      a.uf, 
-      a.city, 
-      a.neighborhood, 
-      a.street, 
-      a.number
-    FROM Person p
-    JOIN Login l ON l.id = p.login_id
-    JOIN Employee e ON e.person_id = p.id
-    JOIN Specialty s ON e.specialty_id = s.id
-    JOIN AddressBase a ON a.employee_id = e.id
-    WHERE p.id = $id
-    LIMIT 1;
-  SQL;
-  
-  $result = $connectionDB->query($sql);
+
 ?>

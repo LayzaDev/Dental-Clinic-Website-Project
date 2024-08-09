@@ -2,10 +2,10 @@
 
   function mysqlConnect(){
 
-    $db_host = "sql110.infinityfree.com";
-    $db_username = "if0_36439084";
-    $db_password = "realsmileclinic";
-    $db_name = "if0_36439084_realsmile";
+    $db_host = "localhost";
+    $db_username = "root";
+    $db_password = "1977";
+    $db_name = "realsmile";
     $db_port = 3306;
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

@@ -56,7 +56,7 @@
   <main>
     <form id="formScheduling" action="editScheduling.php?id=<?php echo $id; ?>" method="post">
       <fieldset>
-        <legend>Atualizar Dados da Consultas</legend>
+        <legend>Atualizar dados da consulta</legend>
         <div class="wrapper">
             <div class="item col-12">
               <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($data['name_patient']); ?>" required>
@@ -72,7 +72,7 @@
             </div>
             <div class="item col-6">
               <label for="specialty" class="labelSelect">Especialidade</label>
-              <select name="specialty" id="specialty" onchange="loadSelectProfessionals()" required>
+              <select name="specialty" id="specialty" onchange="loadSelectProfessionals()">
                 <option value="">Selecione</option>
                 <?php
                   $sqlSpecialty = "SELECT * FROM Specialty ORDER BY id";
@@ -89,7 +89,7 @@
             </div>
             <div class="item col-6">
               <label for="professional" class="labelSelect">Profissional</label>
-              <select name="professional" id="professional" value="<?php echo htmlspecialchars($data['name_employee']); ?>" required>
+              <select name="professional" id="professional" value="<?php echo htmlspecialchars($data['name_employee']); ?>">
                 <option value="">Selecione</option>
               </select>
             </div>
@@ -104,32 +104,8 @@
   <footer>
     <p>&copy By Layza Nauane</p>
   </footer>
-  <script src="../../../js/scheduling.js"></script>
-  <script>
-    async function loadSelectProfessionals() {
-
-      let specialty = document.querySelector("#specialty").value;
-
-      let professionals = await getProfessionals(specialty);
-
-      let inputProfessionals = document.querySelector("#professional");
-
-      inputProfessionals.innerHTML = "";
-
-      professionals.forEach(p => {
-        let option = document.createElement("option");
-        option.value = p.id
-        option.innerText = p.name;
-
-        inputProfessionals.appendChild(option);
-      });
-    }
-
-    window.onload = () => {
-      
-      loadSelectProfessionals();
-    }
-  </script>
+  <script src="../../../js/searchProfessionals.js"></script>
+  <script src="../../../js/loadProfessionals.js"></script>
 </body>
 </html>
 

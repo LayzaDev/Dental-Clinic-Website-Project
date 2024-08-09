@@ -65,25 +65,4 @@
     exit();
   }
 
-  $sql = <<<SQL
-    SELECT 
-      p.id, 
-      p.name, 
-      p.cpf, 
-      p.gender, 
-      p.phone, 
-      p.birthday, 
-      l.email,
-      pt.employee_id,
-      p.status
-    FROM Person p
-    JOIN Login l ON l.id = p.login_id
-    JOIN Patient pt ON pt.person_id = p.id
-    JOIN Employee e ON pt.employee_id = e.id
-    ORDER BY p.id
-    LIMIT 1;
-  SQL;
-  
-  $result = $connectionDB->query($sql);
-
 ?>

@@ -15,24 +15,26 @@
   $logado = $_SESSION['email'];;
 
   $sql = <<< SQL
-    SELECT
-      s.id,
-      (SELECT p1.name 
-      FROM Person p1 
-      JOIN Patient pt ON pt.person_id = p1.id 
-      WHERE pt.id = s.patient_id) AS patient,
-      s.consultation_date, 
-      s.consultation_time, 
-      (SELECT p2.name 
-      FROM Person p2 
-      JOIN Employee e ON e.person_id = p2.id 
-      WHERE e.id = s.employee_id) AS employee,
-      (SELECT sp.specialty 
-      FROM Specialty sp 
-      WHERE sp.id = s.specialty_id) AS specialty,
-      s.status
-    FROM Scheduling s
-    ORDER BY s.id
+    SELECT 
+      A.id,
+      C.name AS name_patient,
+      A.consultation_date, 
+      A.consultation_time,
+      E.name AS name_employee,
+      F.specialty,
+      A.status
+    FROM Scheduling A
+    JOIN Patient B
+      ON A.patient_id = B.id
+    JOIN Person C
+      ON B.person_id = C.id
+    JOIN Employee D
+      ON A.employee_id = D.id
+    JOIN Person E
+      ON D.person_id = E.id
+    JOIN Specialty F
+      ON D.specialty_id = F.id
+    ORDER BY A.id
   SQL;
 
   $result = $connection->query($sql);
@@ -58,7 +60,7 @@
     <a href="../home.php"class="material-symbols-outlined">logout</a>
   </header>
   <div class=".table-responsive{-sm|-md|-lg|-xl}">
-    <table class="table table-striped table-hover">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -76,10 +78,10 @@
           while($data = $result->fetch_assoc()){
             echo "<tr>";
             echo "<td>{$data['id']}</td>";
-            echo "<td>{$data['patient']}</td>";
+            echo "<td>{$data['name_patient']}</td>";
             echo "<td>{$data['consultation_date']}</td>";
             echo "<td>{$data['consultation_time']}</td>";
-            echo "<td>{$data['employee']}</td>";
+            echo "<td>{$data['name_employee']}</td>";
             echo "<td>{$data['specialty']}</td>";
             echo "<td>{$data['status']}</td>";
             echo "<td>

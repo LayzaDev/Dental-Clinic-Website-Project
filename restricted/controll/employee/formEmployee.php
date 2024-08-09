@@ -1,5 +1,55 @@
 <?php
-  include("editEmployee.php");
+  include_once("../../../database/conexaoMySQL.php");
+
+  $connectionDB = mysqlConnect();
+
+  $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+  if($id == 0) {
+    die ("ID inválido");
+  }
+
+  $sql = <<<SQL
+    SELECT 
+      A.id, 
+      A.name, 
+      A.cpf, 
+      A.gender, 
+      A.phone, 
+      A.birthday,
+      B.email, 
+      C.contract_start, 
+      C.wage, 
+      C.cro, 
+      C.specialty_id, 
+      E.cep, 
+      E.uf, 
+      E.city, 
+      E.neighborhood, 
+      E.street, 
+      E.number
+    FROM Person A
+    JOIN Login B 
+      ON A.login_id = B.id
+    JOIN Employee C 
+      ON A.id = C.person_id
+    JOIN Specialty D 
+      ON C.specialty_id = D.id
+    JOIN AddressBase E 
+      ON C.id = E.employee_id
+    WHERE A.id = ?
+  SQL;
+  
+  $stmt = $connectionDB->prepare($sql);
+  $stmt->bind_param("i", $id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows == 0) {
+    die("Paciente não encontrado");
+  }
+
+  $data = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +72,9 @@
       <fieldset>
         <legend>Atualizar Dados Do Funcionário</legend>
         <div class="wrapper">
-          <?php 
-            while ($data = $result->fetch_assoc()) {
-          ?>
+          <!-- <?php 
+            //while ($data = $result->fetch_assoc()) {
+          ?> -->
             <div class="item col-12">
               <input class="inputs" type="text" id="name" name="name" value="<?php echo htmlspecialchars($data['name']); ?>" required>
               <label class="labelInput" for="name">Nome</label>
@@ -122,9 +172,9 @@
               <input class="inputs" type="text" id="neighborhood" name="neighborhood" value="<?php echo htmlspecialchars($data['neighborhood']); ?>">
               <label class="labelInput" for="neighborhood">Bairro</label>
             </div>
-          <?php
-            }
-          ?>
+          <!-- <?php
+          //  }
+          ?> -->
         </div>
       </fieldset>
       <div class="btn">

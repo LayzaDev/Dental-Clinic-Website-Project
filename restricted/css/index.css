@@ -42,7 +42,7 @@ main {
   align-items: center;
 }
 
-.buttons .row > .divDescription {
+.buttons .row > .divDescription{
   padding-top: 8px;
 }
 
@@ -62,14 +62,16 @@ footer p {
   padding-top: 20px;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 780px){
+
   .divBtn a,
   .divDescription p {
     font-size: 15px;
   }
 }
 
-@media (max-width: 480px) {
+@media(max-width: 480px){
+
   .divBtn a,
   .divDescription p {
     justify-content: center;
